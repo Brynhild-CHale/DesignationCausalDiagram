@@ -1,0 +1,1176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Causal diagram: Hurricane declarations and where displaced students land</title>
+<style>
+:root{color-scheme:light dark}
+body{margin:0;background:#f4f3ef;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#33322f}
+main{max-width:1240px;margin:0 auto;padding:24px 16px 48px}
+header h1{font-size:22px;line-height:1.25;margin:0 0 4px;color:#0b0b0b}
+header p{margin:0 0 16px;color:#6b6a65;font-size:14px;max-width:80ch}
+.frame{border:1px solid #e0dfd9;border-radius:12px;overflow:clip;background:#fcfcfb}
+@media (prefers-color-scheme:dark){
+ body{background:#121211;color:#d9d8d2}
+ header h1{color:#f4f3ef}
+ header p{color:#a09f99}
+ .frame{border-color:#33322f;background:#1b1b1a}
+}
+@media (max-width:640px){main{padding:14px 6px 32px}header h1{font-size:19px}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<h1>Hurricane declarations and where displaced students land</h1>
+<p>Causal diagram for a stacked difference-in-differences of McKinney-Vento homeless-student counts around FEMA hurricane declarations, drawn after Huntington-Klein, <em>The Effect</em>, ch. 7. Expand it from the paper figure to everything considered; click a node, an arrow or a dataset for its card.</p>
+</header>
+<div class="frame">
+<style>
+.dag-app{
+ --d-surface:#fcfcfb;--d-ink:#0b0b0b;--d-ink2:#33322f;--d-muted:#6b6a65;--d-rule:#e4e3de;--d-rule2:#c9c8c2;--d-chip:#f1f0ec;--d-card:#ffffff;
+ --d-shadow:0 10px 30px rgba(20,20,10,.16),0 1px 3px rgba(20,20,10,.08);--d-band:#e8e7e2;
+ --surface:var(--wc-panel-bg,var(--d-surface));--ink:var(--wc-fg-bright,var(--d-ink));--ink2:var(--wc-fg,var(--d-ink2));--muted:var(--wc-muted,var(--d-muted));
+ --rule:var(--wc-border-soft,var(--d-rule));--rule2:var(--wc-border,var(--d-rule2));--chipbg:var(--wc-header-bg,var(--d-chip));--card:var(--wc-panel-bg,var(--d-card));
+ --shadow:var(--wc-shadow,var(--d-shadow));--band:var(--wc-border-soft,var(--d-band));--radius:var(--wc-radius,10px);
+ --effect:#2a78d6;--back:#eb6834;--other:#8a8984;--good:#0ca30c;--warn:#e6a000;--none:#a3a29c;--focus:#2a78d6;
+ font-family:var(--wc-font,system-ui,-apple-system,"Segoe UI",sans-serif);color:var(--ink2);font-size:13.5px;line-height:1.45;background:var(--surface);
+ position:relative}
+@media (prefers-color-scheme:dark){
+ .dag-app[data-standalone]{--d-surface:#1b1b1a;--d-ink:#f4f3ef;--d-ink2:#d9d8d2;--d-muted:#a09f99;--d-rule:#302f2c;--d-rule2:#4b4a45;--d-chip:#262624;--d-card:#232321;
+  --d-shadow:0 10px 30px rgba(0,0,0,.55),0 1px 3px rgba(0,0,0,.4);--d-band:#2c2b28;--other:#9a9993;--good:#3cbf3c;--none:#7d7c77}
+}
+.dag-app *{box-sizing:border-box}
+.dag-app button{font:inherit;color:inherit}
+.dag-app :focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.dag-app svg :focus-visible{outline:none}
+
+/* toolbar */
+.dag-app .tb{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding:12px 14px 4px}
+.dag-app .seg{display:inline-flex;border:1px solid var(--rule2);border-radius:9px;overflow:hidden;background:var(--chipbg)}
+.dag-app .seg button{border:0;background:transparent;padding:5px 12px;font-size:12.5px;cursor:pointer;border-right:1px solid var(--rule2);white-space:nowrap}
+.dag-app .seg button:last-child{border-right:0}
+.dag-app .seg button[aria-checked="true"]{background:var(--effect);color:#fff}
+.dag-app .seg button.cust{font-style:italic;cursor:default}
+.dag-app .seg button[hidden]{display:none}
+.dag-app .seg-l{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
+.dag-app .tb-r{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;margin-left:auto;font-size:12px;color:var(--muted)}
+.dag-app button.lnk{border:0;background:none;color:var(--ink2);text-decoration:underline;text-decoration-color:var(--rule2);text-underline-offset:2px;cursor:pointer;padding:2px 3px;font-size:12px}
+.dag-app button.lnk:hover{color:var(--effect)}
+.dag-app button.tog{border:1px solid var(--rule2);background:var(--chipbg);border-radius:12px;padding:2px 9px;font-size:12px;cursor:pointer}
+.dag-app button.tog[aria-pressed="true"]{border-color:var(--ink2);color:var(--ink)}
+.dag-app .hint{padding:0 14px 8px;font-size:12px;color:var(--muted);min-height:1.45em}
+.dag-app .hint b{color:var(--ink2);font-weight:600}
+
+/* datasets bar */
+.dag-app .dsbar{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:flex-start;padding:8px 14px;border-top:1px solid var(--rule)}
+.dag-app .grp{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.dag-app .grp-l{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:2px;font-weight:600}
+.dag-app button.chip{font-size:12px;display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:14px;border:1px solid var(--rule2);background:var(--chipbg);cursor:pointer}
+.dag-app button.chip[aria-pressed="true"]{background:var(--effect);border-color:var(--effect);color:#fff}
+.dag-app button.chip[aria-pressed="true"] .dot{box-shadow:0 0 0 1.5px #fff}
+.dag-app .dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+.dag-app .dot.in{background:var(--good)}.dag-app .dot.proxy{background:transparent;border:2px solid var(--good)}
+.dag-app .dot.avail{background:var(--warn)}.dag-app .dot.none{background:transparent;border:1.5px solid var(--none)}
+
+/* legend */
+.dag-app .legend{display:flex;flex-wrap:wrap;gap:4px 22px;padding:6px 14px 4px;font-size:11.5px;color:var(--muted);border-top:1px solid var(--rule)}
+.dag-app .lg{display:flex;flex-wrap:wrap;align-items:center;gap:3px 12px}
+.dag-app .lg-l{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.dag-app .lg span{display:inline-flex;align-items:center;gap:6px}
+.dag-app .sw{display:inline-block;width:24px;height:0;border-top:2.4px solid}
+.dag-app .bx{display:inline-block;width:18px;height:12px;border:1.4px solid var(--rule2);border-radius:3px}
+.dag-app .beadkey{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;border-radius:50%;border:2px solid var(--other);font-style:normal;font-size:12px;font-weight:700;line-height:1;color:var(--other)}
+.dag-app .cnt{font-size:10px;font-weight:600;color:var(--muted);border:1px solid var(--rule2);border-radius:4px;padding:0 3px;line-height:1.3}
+
+/* stage + svg */
+.dag-app .stage{position:relative;border-top:1px solid var(--rule)}
+.dag-app .scroller{overflow-x:auto;overscroll-behavior-x:contain}
+.dag-app svg.dag{width:100%;height:auto;display:block;user-select:none;-webkit-user-select:none}
+/* narrow: keep the diagram at a readable scale (smallest SVG text >= 10px) and scroll it sideways */
+.dag-app:not([data-wide]) svg.dag{min-width:1280px}
+.dag-app .cue{display:none;padding:6px 14px 0;font-size:12px;color:var(--muted)}
+.dag-app:not([data-wide])[data-scrolls] .cue{display:block}
+.dag-app .band{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;fill:var(--muted);font-weight:600}
+.dag-app .bandline{stroke:var(--band);stroke-width:1}
+.dag-app .node{cursor:pointer;transition:opacity .18s ease,transform .18s ease,visibility 0s}
+.dag-app .node.off{opacity:0 !important;visibility:hidden;pointer-events:none;transition:opacity .18s ease,transform .18s ease,visibility 0s linear .18s}
+.dag-app .node rect.b{fill:var(--surface);stroke:var(--rule2);stroke-width:1.3}
+.dag-app .node.T rect.b{stroke:var(--effect);stroke-width:2.6}
+.dag-app .node.Y rect.b{stroke:var(--ink);stroke-width:2.6}
+.dag-app .node.latent rect.b{stroke-dasharray:5 3}
+.dag-app .node.added rect.b{stroke:var(--back);stroke-dasharray:5 3}
+.dag-app .node.ghost rect.b{stroke-dasharray:4 3;stroke:var(--rule2);fill:transparent}
+.dag-app .node.ghost{opacity:.5}
+.dag-app .node.ghost text.l{font-weight:500}
+.dag-app .node rect.ring{fill:none;stroke:none}
+.dag-app .node.sel rect.ring{stroke:var(--effect);stroke-width:3}
+.dag-app .node.dm rect.ring{stroke:var(--effect);stroke-width:2;stroke-dasharray:3 2}
+.dag-app .node.sel.dm rect.ring{stroke-dasharray:none}
+.dag-app .node:focus-visible rect.ring{stroke:var(--focus);stroke-width:3;stroke-dasharray:none}
+.dag-app .node:hover rect.b{stroke-width:2}
+.dag-app .node text.l{font-size:13px;font-weight:600;fill:var(--ink)}
+.dag-app .node text.s{font-size:11px;fill:var(--muted)}
+.dag-app .node text.n{font-size:11px;font-weight:600;fill:var(--muted)}
+.dag-app .node text.tag{font-size:11px;font-style:italic;fill:var(--muted)}
+.dag-app .edge{fill:none;stroke-width:1.9;transition:opacity .15s}
+.dag-app .edge.c-effect{stroke:var(--effect)}.dag-app .edge.c-back{stroke:var(--back)}.dag-app .edge.c-other{stroke:var(--other)}
+.dag-app .edge.p-claude{stroke-dasharray:6 4}
+.dag-app .edge.ghost{opacity:.4}
+.dag-app .edge.sel{stroke-width:3.4}
+.dag-app .edge.enter{animation:dagfade .2s ease both}
+.dag-app .hit{fill:none;stroke:transparent;stroke-width:16;pointer-events:stroke;cursor:pointer}
+@keyframes dagfade{from{opacity:0}}
+.dag-app .bead{cursor:pointer;transition:opacity .15s}
+.dag-app .bead.off{display:none}
+.dag-app .bead .bhit{fill:transparent}
+.dag-app .bead .bd{fill:var(--surface);stroke-width:2}
+.dag-app .bead .plus{stroke-width:1.8;stroke-linecap:round}
+.dag-app .bead .blab{font-size:11.5px;font-weight:500;fill:var(--muted);paint-order:stroke;stroke:var(--surface);stroke-width:4px;stroke-linejoin:round;pointer-events:none}
+.dag-app .bead:hover .blab,.dag-app .bead:focus-visible .blab,.dag-app .bead.dm .blab{fill:var(--ink);font-weight:600}
+.dag-app .bead:hover .bd{stroke-width:3}
+.dag-app .bead:focus-visible .bd{stroke:var(--focus) !important;stroke-width:3.4}
+.dag-app .bead.dm .bd{stroke-width:3.4}
+.dag-app .bead.ghost{opacity:.5}
+.dag-app .bead.ghost .bd{stroke-dasharray:3 2}
+.dag-app .pill{cursor:pointer;transition:opacity .15s}
+.dag-app .pill.off{display:none}
+.dag-app .pill rect{fill:var(--chipbg);stroke:var(--rule2);stroke-width:1.1}
+.dag-app .pill text{font-size:11px;font-weight:600;fill:var(--muted);letter-spacing:.02em}
+.dag-app .pill:hover rect,.dag-app .pill:focus-visible rect{stroke:var(--effect);stroke-width:1.8}
+.dag-app .pill:hover text,.dag-app .pill:focus-visible text{fill:var(--effect)}
+.dag-app svg.dim .edge:not(.dm),.dag-app svg.dim .node:not(.dm),.dag-app svg.dim .bead:not(.dm),.dag-app svg.dim .pill{opacity:.16}
+.dag-app svg.iso .edge:not(.hi),.dag-app svg.iso .node:not(.hi),.dag-app svg.iso .bead:not(.hi),.dag-app svg.iso .pill{opacity:.12}
+.dag-app svg.iso .edge.hi,.dag-app svg.iso .node.hi,.dag-app svg.iso .bead.hi{opacity:1}
+/* a removed node stays ghosted when its arrows are isolated */
+.dag-app svg.iso .node.ghost.hi,.dag-app svg.iso .bead.ghost.hi{opacity:.6}
+.dag-app svg.iso .edge.hi{stroke-width:2.6}
+
+/* card: right drawer when wide, bottom sheet when narrow */
+.dag-app .drawer{background:var(--card);color:var(--ink2);border:1px solid var(--rule2);box-shadow:var(--shadow);z-index:2;display:flex;flex-direction:column}
+.dag-app .drawer[hidden]{display:none}
+.dag-app[data-wide] .drawer{position:absolute;top:10px;right:10px;max-height:calc(100% - 20px);width:min(360px,40%);border-radius:var(--radius)}
+.dag-app[data-wide] .drawer[data-side="left"]{right:auto;left:10px}
+.dag-app:not([data-wide]) .drawer{position:sticky;bottom:0;margin:0 6px;max-height:min(62vh,560px);border-radius:14px 14px 0 0;border-bottom:0}
+.dag-app:not([data-wide]) .drawer::before{content:"";display:block;width:38px;height:4px;border-radius:2px;background:var(--rule2);margin:7px auto 0}
+.dag-app .dhead{display:flex;align-items:center;gap:6px;padding:8px 10px 6px;border-bottom:1px solid var(--rule)}
+.dag-app .dhead .kind{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:600;margin-right:auto}
+.dag-app .dhead button{border:1px solid transparent;background:none;cursor:pointer;border-radius:6px;padding:2px 8px;font-size:12.5px;color:var(--ink2)}
+.dag-app .dhead button:hover{border-color:var(--rule2)}
+.dag-app .dhead button.x{font-size:18px;line-height:1;padding:1px 8px}
+.dag-app .dhead button[hidden]{display:none}
+.dag-app .dbody{overflow:auto;padding:10px 14px 16px;flex:1 1 auto;overscroll-behavior:contain}
+.dag-app .dbody h2{font-size:16px;line-height:1.3;margin:0 0 4px;color:var(--ink);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.dag-app .dbody h2:focus{outline:none}
+.dag-app .dbody h2:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:3px}
+.dag-app .dbody h3{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:14px 0 4px;font-weight:600}
+.dag-app .dbody p{margin:4px 0}
+.dag-app .dbody ul{margin:0;padding:0;list-style:none}
+.dag-app .dbody li{padding:5px 0;border-bottom:1px solid var(--rule)}
+.dag-app .dbody li:last-child{border-bottom:0}
+.dag-app .meta{color:var(--muted);font-size:12.5px}
+.dag-app .pillt{font-size:10.5px;padding:1px 7px;border-radius:9px;background:var(--chipbg);color:var(--muted);font-weight:500;border:1px solid var(--rule)}
+.dag-app .pillt.warn{background:transparent;border-color:var(--warn);color:color-mix(in srgb,var(--warn) 60%,var(--ink))}
+.dag-app .stat{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink2)}
+.dag-app .box{border:1px solid var(--rule);border-radius:8px;padding:8px 10px;margin:8px 0;background:var(--surface)}
+.dag-app .box p{margin:2px 0 6px}
+.dag-app button.act{font-size:12px;padding:4px 10px;border-radius:6px;border:1px solid var(--rule2);background:var(--chipbg);cursor:pointer}
+.dag-app button.act:hover{border-color:var(--effect);color:var(--effect)}
+.dag-app .it{font-weight:600;color:var(--ink)}
+.dag-app .tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px;align-items:center}
+.dag-app button.tag{font-size:11px;display:inline-flex;align-items:center;gap:5px;padding:1px 7px;border-radius:10px;background:var(--chipbg);border:1px solid var(--rule);cursor:pointer}
+.dag-app button.tag:hover{border-color:var(--effect)}
+.dag-app span.tag{font-size:11px;display:inline-flex;align-items:center;gap:5px;padding:1px 7px;border-radius:10px;color:var(--muted);border:1px dashed var(--rule2)}
+.dag-app .small{font-size:12px;color:var(--muted)}
+.dag-app button.nl{border:0;background:none;padding:0;color:var(--effect);cursor:pointer;text-align:left;font-size:inherit;text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--effect) 35%,transparent);text-underline-offset:2px}
+.dag-app .arw{display:flex;align-items:center;gap:7px;font-size:12.5px}
+.dag-app .arw .sw{width:18px;flex:none}
+.dag-app .quote{border-left:3px solid var(--rule2);padding:4px 0 4px 10px;margin:6px 0;color:var(--ink);font-size:13.5px}
+.dag-app a.out{color:var(--effect);text-underline-offset:2px}
+.dag-app .links li{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.dag-app details.lnotes{margin:6px 0 0;font-size:12px;color:var(--muted)}
+.dag-app details.lnotes summary{cursor:pointer;width:max-content;max-width:100%}
+.dag-app details.lnotes p{margin:4px 0 0}
+
+.dag-app .foot{padding:8px 14px 12px;border-top:1px solid var(--rule);font-size:11.5px;color:var(--muted)}
+.dag-app pre.audit{white-space:pre-wrap;font-size:11px;padding:8px 14px}
+/* no motion on first paint */
+.dag-app.boot *{transition:none !important;animation:none !important}
+@media (prefers-reduced-motion:reduce){.dag-app *,.dag-app *::before{transition:none !important;animation:none !important}}
+</style>
+
+<div class="dag-app boot" id="dag-app">
+  <div class="tb">
+    <span class="seg-l" id="dag-seg-l">Expand</span>
+    <div class="seg" id="dag-seg" role="radiogroup" aria-labelledby="dag-seg-l"></div>
+    <div class="tb-r" id="dag-tbr"></div>
+  </div>
+  <div class="hint" id="dag-hint" aria-live="polite"></div>
+  <div class="dsbar" id="dag-dsbar" role="group" aria-label="Datasets"></div>
+  <div class="legend" id="dag-legend"></div>
+  <div class="stage" id="dag-stage">
+    <p class="cue" id="dag-cue">Scroll sideways for the whole diagram.</p>
+    <div class="scroller" id="dag-scroller">
+    <svg class="dag" id="dag-svg" viewBox="0 0 1400 712" role="group" aria-label="Causal diagram: hurricane declarations and where displaced families land" tabindex="-1"></svg>
+    </div>
+    <aside class="drawer" id="dag-drawer" role="dialog" aria-modal="false" aria-labelledby="dag-card-title" hidden>
+      <div class="dhead">
+        <button type="button" id="dag-back" aria-label="Back to the previous card">&#8249; Back</button>
+        <span class="kind" id="dag-kind"></span>
+        <button type="button" class="x" id="dag-close" aria-label="Close card">&times;</button>
+      </div>
+      <div class="dbody" id="dag-body"></div>
+    </aside>
+  </div>
+  <div class="foot" id="dag-foot"></div>
+</div>
+
+<script>
+(() => {
+const R = (typeof root !== 'undefined' && root) ? root : document;
+const API = (typeof api !== 'undefined' && api) ? api : null;
+const SIG = (API && API.signal) ? API.signal : new AbortController().signal;
+const ON = {signal: SIG};
+const STANDALONE = R === document;
+const NS = 'http://www.w3.org/2000/svg';
+
+// ------------------------------------------------------------------ data (inlined by build.sh)
+const G = {"title":"Hurricane declarations and where displaced students land","source":"Huntington-Klein, The Effect (2021), ch. 7, “Drawing Causal Diagrams”","treatment":"dec","outcome":"y","levels":[{"id":0,"name":"Minimal","desc":"The paper figure: removed nodes hidden, mediators folded into their arrows, household size and social network merged."},{"id":1,"name":"Mediators open","desc":"Every mediator shown as a node."},{"id":2,"name":"Merged nodes split","desc":"Household resources split back into household size and social network."},{"id":3,"name":"Maximal","desc":"Also the nodes removed as irrelevant, shown ghosted with the reason."}],"rules":{"mediator":"A node, not the treatment or outcome, with exactly one incoming and one outgoing edge among the edges visible at that level, folds into its arrow (Ch. 7). Compute it; do not hard-code it.","edgeLevels":"core = always; merged = only while the merged node is shown; split = only while split; removed = only at the maximal level (or when the user shows removed nodes).","nodeLevels":"core = always; split = only when its merged parent is split; removed = only at maximal (or when shown).","provenance":"user = stated by the author; claude = proposed by Claude and accepted by the author.","color":"effect = the declaration's own routes to the outcome; back = routes that reach the outcome side without going through the declaration (back doors); other = the declaration's assignment chain and the rest."},"datasets":[{"id":"fs118","short":"EDFacts FS118","status":"in","name":"EDFacts file specification 118 (McKinney-Vento)","pub":"U.S. Department of Education","unit":"district × school year, summed to county","years":"2010–11 to 2023–24","note":"Identified homeless students by primary nighttime residence: doubled-up, hotel/motel, shelter, unsheltered."},{"id":"ccd","short":"NCES CCD / EDGE","status":"in","name":"NCES Common Core of Data and EDGE district geocodes","pub":"U.S. Department of Education","unit":"district","years":"annual","note":"Places each district in one county."},{"id":"dds","short":"FEMA Declarations","status":"in","name":"OpenFEMA Disaster Declarations Summaries (v2)","pub":"FEMA","unit":"declaration × designated county","years":"2000–2025","note":"Incident type, incident begin date, declaration date, request number, and whether IA / IH / PA were declared for the county."},{"id":"ha","short":"FEMA Housing Assistance","status":"in","name":"OpenFEMA Housing Assistance, Owners and Renters (v2)","pub":"FEMA","unit":"disaster × county name × city × ZIP","years":"2002–","note":"FEMA-inspected damage bands and approved IHP dollars (repair/replace, rental, other needs). County is a name, not FIPS."},{"id":"ihp","short":"FEMA TSA check-ins","status":"in","name":"OpenFEMA IHP Valid Registrations, TSA pull (v2)","pub":"FEMA","unit":"registration (household), by damaged-dwelling county","years":"2008–","note":"Pulled with filter tsaCheckedIn = true; fields fips, ownRent, destroyed, tsaEligible, tsaCheckedIn. Missing, not zero, before 2008."},{"id":"noaa","short":"NOAA Storm Events","status":"in","name":"NOAA NCEI Storm Events Database","pub":"NOAA NCEI","unit":"event × county or forecast zone","years":"2000–2025","note":"Event type, begin date, deaths, property and crop damage (NWS estimates, nominal dollars)."},{"id":"acs","short":"ACS 5-year","status":"in","name":"American Community Survey 5-year, county","pub":"U.S. Census Bureau","unit":"county × year","years":"2009–","note":"Median gross rent, median household income, renter share, occupied units, rent burden. Vacancy and household-size tables are not in this pull."},{"id":"zori","short":"Zillow ZORI","status":"in","name":"Zillow Observed Rent Index, county","pub":"Zillow","unit":"county × year","years":"2015–","note":"Market asking rents; thinner coverage in rural counties."},{"id":"fmr","short":"HUD 50th-pct rent","status":"in","name":"HUD 50th-percentile two-bedroom rent","pub":"HUD","unit":"FMR area × fiscal year","years":"FY2006–2026","note":"Rent at the middle of the market, mapped to counties."},{"id":"pit","short":"HUD PIT counts","status":"in","name":"HUD Point-in-Time counts, CoC apportioned to county","pub":"HUD","unit":"county × year (from CoC)","years":"2007–","note":"Sheltered and unsheltered people, including people in families, on one January night. Use of shelter, not capacity."},{"id":"bps","short":"Building permits","status":"in","name":"Census Building Permits Survey, county","pub":"U.S. Census Bureau","unit":"county × year","years":"2005–","note":"New residential permits: a proxy for how fast housing is rebuilt."},{"id":"evl","short":"Eviction Lab","status":"in","name":"Eviction Lab filings","pub":"Princeton Eviction Lab","unit":"county × year","years":"varies by state","note":"Eviction filings: landlord behavior after the storm."},{"id":"hurdat","short":"NHC HURDAT2","status":"avail","name":"NHC Atlantic hurricane best-track (HURDAT2)","pub":"NOAA National Hurricane Center","unit":"storm × 6-hour fix","years":"1851–","note":"Track, maximum wind and pressure; would give intensity at the county."},{"id":"ihpfull","short":"FEMA IHP, full fields","status":"avail","name":"OpenFEMA IHP Valid Registrations, all fields","pub":"FEMA","unit":"registration (household)","years":"2002–","note":"The same file as the TSA pull, with household composition, income, insurance and tenure fields. Field names to confirm against the data dictionary."},{"id":"nfip","short":"NFIP policies","status":"avail","name":"OpenFEMA NFIP policies","pub":"FEMA","unit":"policy, by county","years":"2009–","note":"Flood-insurance take-up."},{"id":"pda","short":"FEMA PDA reports","status":"avail","name":"FEMA Preliminary Damage Assessment reports","pub":"FEMA","unit":"declaration request","years":"recent years","note":"Documents, not a table: assessed damage and per-capita impact behind each request."},{"id":"fedreg","short":"Per-capita indicators","status":"avail","name":"FEMA per-capita impact indicators (Federal Register)","pub":"FEMA","unit":"fiscal year","years":"annual","note":"The statewide and countywide thresholds a request is judged against."},{"id":"elect","short":"Election returns","status":"avail","name":"MIT Election Data + Science Lab returns","pub":"MIT MEDSL","unit":"county / state × election","years":"2000–","note":"Presidential vote margins: the political-interest literature uses swing-state status."},{"id":"hic","short":"HUD HIC","status":"avail","name":"HUD Housing Inventory Count","pub":"HUD","unit":"CoC × year","years":"2007–","note":"Shelter and transitional beds: capacity, not use."},{"id":"cbp","short":"County Business Patterns","status":"avail","name":"County Business Patterns, NAICS 7211 (traveler accommodation)","pub":"U.S. Census Bureau","unit":"county × year","years":"annual","note":"Hotel and motel establishments: a proxy for room capacity."},{"id":"acsvac","short":"ACS vacancy & households","status":"avail","name":"ACS vacancy-status and household-size tables","pub":"U.S. Census Bureau","unit":"county × year","years":"2009–","note":"Rental vacancy; average household size; households with children."},{"id":"adj","short":"County adjacency","status":"avail","name":"Census county adjacency file","pub":"U.S. Census Bureau","unit":"county pair","years":"2010, 2020","note":"Which counties border which: needed to find a neighbor's designation."},{"id":"sba","short":"SBA disaster loans","status":"avail","name":"SBA disaster loan data","pub":"U.S. Small Business Administration","unit":"loan, by county","years":"2000s–","note":"Home loans for repair: slow recovery money."},{"id":"cdbg","short":"HUD CDBG-DR","status":"avail","name":"HUD Community Development Block Grant – Disaster Recovery","pub":"HUD","unit":"grantee × disaster","years":"2005–","note":"Long-run rebuilding money, often years after the storm."}],"nodes":[{"level":"core","id":"int","l":"Storm intensity","s":"wind, surge, rain","x":110,"y":90,"role":"cause","grouped":"claude","data":[{"ds":"noaa","what":"event types, deaths, property damage","proxy":1},{"ds":"hurdat","what":"maximum wind along the track"}],"items":[{"n":"Wind","ds":["hurdat","noaa"]},{"n":"Storm surge","ds":["noaa"]},{"n":"Rainfall and flooding","ds":["noaa"]},{"n":"Track and landfall location","ds":["hurdat"]}],"note":"The source of the variation; kept under Ch. 7’s caveat although its arrows are few."},{"level":"core","id":"phys","l":"Physical damage","s":"to housing","x":320,"y":90,"role":"cause","grouped":"claude","data":[{"ds":"noaa","what":"property damage estimate"},{"ds":"ha","what":"FEMA-inspected damage bands"},{"ds":"ihp","what":"destroyed flag (TSA households)"}],"items":[{"n":"Severity: destroyed vs. damaged but habitable","ds":["ha","ihp"]}]},{"level":"core","id":"ins","l":"Insurance coverage","s":"feeds both sides","x":110,"y":335,"role":"confounder","grouped":"claude","note":"You listed insurance twice: it changes assessed uninsured damage and ease of exit. Drawn as one node, which makes it a back door.","data":[{"ds":"nfip","what":"flood-insurance take-up"},{"ds":"ihpfull","what":"homeowner / flood insurance flags"}],"items":[{"n":"Homeowner / renter policies (additional living expenses)","ds":["ihpfull"]},{"n":"Flood insurance take-up","ds":["nfip"]}]},{"level":"core","id":"asd","l":"Assessed uninsured damage","s":"","x":540,"y":160,"role":"cause","grouped":"claude","data":[{"ds":"pda","what":"assessed damage behind the request"},{"ds":"ha","what":"approved IHP dollars (after the fact)","proxy":1}],"items":[{"n":"Per-capita impact vs. state and county indicators","ds":["pda","fedreg"]}]},{"level":"core","id":"ia","l":"Incident assessment","s":"PDA","x":750,"y":160,"role":"cause","grouped":"claude","data":[{"ds":"pda","what":"the assessment itself"}],"items":[{"n":"Joint preliminary damage assessment (FEMA, state, county)","ds":["pda"]}]},{"level":"removed","id":"time","l":"Incident timing","s":"","x":540,"y":290,"role":"cause","grouped":"claude","data":[{"ds":"dds","what":"incident begin date"},{"ds":"noaa","what":"event begin date"}],"items":[{"n":"Incident begin date vs. school year","ds":["dds","noaa"]}],"removed":"Irrelevant (Ch. 7): it sits only on a dead-end chain into the declaration, on no path to the outcome; FEMA rules change by year, which the state-by-year effects absorb."},{"level":"removed","id":"fema","l":"FEMA rules & capacity","s":"at that time","x":750,"y":300,"role":"cause","grouped":"claude","data":[{"ds":"fedreg","what":"thresholds in force"},{"ds":"dds","what":"concurrent declarations (workload)","proxy":1}],"items":[{"n":"Per-capita thresholds, indexed yearly","ds":["fedreg"]},{"n":"Revised Individual Assistance factors (about 2019)","ds":["fedreg"]},{"n":"Workload in a busy season (e.g., 2017)","ds":["dds"]}],"removed":"Irrelevant (Ch. 7): it sits only on a dead-end chain into the declaration, on no path to the outcome; FEMA rules change by year, which the state-by-year effects absorb."},{"level":"core","id":"req","l":"Request & politics","s":"","x":960,"y":215,"role":"cause","grouped":"claude","data":[{"ds":"dds","what":"request number; statewide designations","proxy":1},{"ds":"elect","what":"swing-state status"}],"items":[{"n":"Governor’s request: whether, when, which counties, statewide","ds":["dds"]},{"n":"Presidential electoral interest","ds":["elect"]},{"n":"Congressional ties","ds":[]}]},{"level":"core","id":"dec","l":"Declaration","s":"TREATMENT","x":1170,"y":215,"c":"T","role":"treatment","grouped":"claude","data":[{"ds":"dds","what":"county designations for hurricane DRs"}],"items":[{"n":"Major-disaster (DR) hurricane declaration naming the county","ds":["dds"]},{"n":"FEMA incident-type code","ds":["dds"]},{"n":"Amendments adding counties later","ds":["dds"]}]},{"level":"core","id":"disp","l":"Displacement","s":"need for somewhere to stay","x":320,"y":440,"c":"added","role":"mediator","grouped":"claude","note":"Added by Claude: without it the diagram says a storm changes homelessness only through the declaration.","data":[{"ds":"ha","what":"inspected damage, renters with major damage","proxy":1},{"ds":"ihp","what":"destroyed homes (TSA households)","proxy":1},{"ds":"ihpfull","what":"habitability, destroyed, all registrants"}],"items":[{"n":"Homes destroyed or uninhabitable","ds":["ha","ihp","ihpfull"]}]},{"level":"core","id":"nbr","l":"Neighbor designated","s":"(inbound)","x":110,"y":560,"role":"spillover","grouped":"claude","data":[{"ds":"dds","what":"designations; finding neighbors needs the adjacency file","proxy":1},{"ds":"adj","what":"which counties border which"}],"items":[{"n":"A bordering county declared the same school year","ds":["dds","adj"]}]},{"level":"core","id":"infl","l":"Influx of temporary","s":"residents","x":320,"y":630,"role":"spillover","grouped":"claude","note":"No direct measure: an influx shows up only inside the receiving county’s counts.","data":[{"ds":"fs118","what":"only inside the receiving county’s counts","proxy":1}],"items":[{"n":"Displaced families arriving from neighboring counties","ds":[]},{"n":"Children enrolled (and counted) where they arrive","ds":["fs118"]}]},{"level":"core","id":"act","l":"Activated resources","s":"IA, TSA","x":750,"y":410,"role":"mediator","grouped":"you","data":[{"ds":"dds","what":"IA / IH declared for the county"},{"ds":"ihp","what":"TSA hotel check-ins"},{"ds":"ha","what":"approved rental and repair dollars"}],"items":[{"n":"Individual Assistance designation","ds":["dds"]},{"n":"TSA hotel check-ins","ds":["ihp"]},{"n":"TSA duration and extensions","ds":[]},{"n":"Direct housing (trailers, manufactured units)","ds":[]}]},{"level":"core","id":"dtim","l":"Declaration timing","s":"how soon declared","x":960,"y":410,"role":"mediator","grouped":"you","data":[{"ds":"dds","what":"declaration date minus incident begin date"}],"items":[{"n":"Days from incident to declaration","ds":["dds"]}]},{"level":"core","id":"sup","l":"Accommodation available","s":"shelter · hotel · vacancy · leases","x":540,"y":540,"role":"modifier","grouped":"you","data":[{"ds":"acs","what":"median rent, renter share"},{"ds":"zori","what":"market rents"},{"ds":"fmr","what":"rent at the middle of the market"},{"ds":"evl","what":"eviction filings"},{"ds":"pit","what":"people in shelter (use)","proxy":1},{"ds":"hic","what":"shelter beds (capacity)"},{"ds":"cbp","what":"hotel establishments"},{"ds":"acsvac","what":"rental vacancy"}],"items":[{"n":"Shelter capacity","ds":["hic","pit"]},{"n":"Hotel / motel capacity","ds":["cbp"]},{"n":"Rental vacancy","ds":["acsvac"]},{"n":"Rents, including the post-storm spike","ds":["acs","zori","fmr"]},{"n":"Lease restrictions","ds":[]},{"n":"Landlord behavior: terminations, evictions (placed here by Claude)","ds":["evl"]}]},{"level":"split","id":"hh","l":"Household size","s":"","x":560,"y":655,"role":"modifier","grouped":"claude","data":[{"ds":"acsvac","what":"average household size, households with children"},{"ds":"ihpfull","what":"household composition of registrants"}],"items":[{"n":"Family size","ds":["acsvac","ihpfull"]},{"n":"School-age children per family","ds":["acsvac","ihpfull"]}],"mergedInto":"hhr"},{"level":"split","id":"soc","l":"Social network","s":"informal places to stay","x":770,"y":655,"c":"latent","role":"modifier","grouped":"claude","data":[],"items":[{"n":"Kin and friends with room, and themselves undamaged","ds":[]}],"mergedInto":"hhr"},{"level":"core","id":"land","l":"Where families land","s":"rung, storm year","x":960,"y":540,"c":"latent","role":"latent","grouped":"claude","note":"Unobserved: the count of identified students is its measurement.","data":[{"ds":"fs118","what":"measured through the counts","proxy":1},{"ds":"pit","what":"sheltered families (validation)","proxy":1}],"items":[{"n":"Doubled-up","ds":["fs118"]},{"n":"Hotel / motel","ds":["fs118"]},{"n":"Shelter","ds":["fs118","pit"]},{"n":"Unsheltered","ds":["fs118","pit"]}]},{"level":"core","id":"fin","l":"Financial security","s":"","x":1170,"y":655,"role":"modifier","grouped":"claude","data":[{"ds":"acs","what":"median household income","proxy":1},{"ds":"ihpfull","what":"gross income of registrants"}],"items":[{"n":"Income and savings","ds":["acs","ihpfull"]}]},{"level":"core","id":"exit","l":"Ease of exit","s":"time on the rung","x":1170,"y":540,"c":"latent","role":"latent","grouped":"claude","note":"Unobserved: read from how long each rung’s count stays elevated.","data":[{"ds":"bps","what":"rebuilding permits","proxy":1},{"ds":"sba","what":"home repair loans"},{"ds":"cdbg","what":"long-run rebuilding grants"}],"items":[{"n":"Repair and rebuilding speed","ds":["bps"]},{"n":"Slow money: SBA loans, CDBG-DR","ds":["sba","cdbg"]}]},{"level":"core","id":"y","l":"Identified count by rung","s":"OUTCOME, D · M · S · U","x":1300,"y":410,"c":"Y","role":"outcome","grouped":"claude","data":[{"ds":"fs118","what":"the counts"},{"ds":"ccd","what":"district-to-county placement"}],"items":[{"n":"Doubled-up (D)","ds":["fs118"]},{"n":"Hotel / motel (M)","ds":["fs118"]},{"n":"Shelter (S)","ds":["fs118"]},{"n":"Unsheltered (U)","ds":["fs118"]}]},{"id":"hhr","l":"Household resources","s":"size · kin with room","x":650,"y":655,"role":"modifier","grouped":"claude","level":"core","splitInto":["hh","soc"],"note":"Merged (Ch. 7 redundancy): household size and social network have the same single arrow, into where families land.","data":[{"ds":"acsvac","what":"average household size, households with children"},{"ds":"ihpfull","what":"household composition of registrants"}],"items":[{"n":"Family size","ds":["acsvac","ihpfull"]},{"n":"School-age children per family","ds":["acsvac","ihpfull"]},{"n":"Kin and friends with room, and themselves undamaged","ds":[]}]}],"edges":[{"from":"int","to":"phys","color":"back","provenance":"user","level":"core","assumption":"Stronger wind, surge and rain damage more housing."},{"from":"int","to":"nbr","color":"back","provenance":"claude","level":"core","assumption":"The same storm hits the neighboring counties, so a neighbor’s designation moves with this county’s."},{"from":"phys","to":"asd","color":"other","provenance":"claude","level":"core","assumption":"Assessors count the damage that is there."},{"from":"ins","to":"asd","color":"other","provenance":"user","level":"core","assumption":"Insured losses do not count toward need, so coverage lowers assessed uninsured damage."},{"from":"fin","to":"ins","color":"back","provenance":"claude","level":"core","assumption":"Income buys insurance. This makes financial security a confounder: it reaches both the declaration (through assessed damage) and the outcome (through ease of exit)."},{"from":"asd","to":"ia","color":"other","provenance":"user","level":"core","assumption":"Assessed uninsured damage drives the incident assessment."},{"from":"ia","to":"req","color":"other","provenance":"claude","level":"core","assumption":"The assessment is the basis of the governor’s request."},{"from":"req","to":"dec","color":"other","provenance":"user","level":"core","assumption":"The President declares on the governor’s request."},{"from":"time","to":"fema","color":"other","provenance":"user","level":"removed","assumption":"Incident timing sets which FEMA rules and workload apply."},{"from":"fema","to":"dec","color":"other","provenance":"claude","level":"removed","assumption":"FEMA’s thresholds and capacity shape the recommendation."},{"from":"dec","to":"act","color":"effect","provenance":"claude","level":"core","assumption":"The declaration is the gate to Individual Assistance and TSA hotel rooms."},{"from":"dec","to":"dtim","color":"effect","provenance":"claude","level":"core","assumption":"How soon the county is declared is a property of the declaration."},{"from":"phys","to":"dtim","color":"back","provenance":"claude","level":"core","assumption":"Catastrophic storms are declared faster. Hurricane declarations, SY 2010–2023: median 26 days from incident start, a third within a week, 44% after more than 30 days (OpenFEMA Disaster Declarations Summaries)."},{"from":"act","to":"sup","color":"effect","provenance":"user","level":"core","assumption":"Activated resources change what accommodation is available."},{"from":"dtim","to":"land","color":"effect","provenance":"user","level":"core","assumption":"Declaration timing changes where families are when assistance arrives, and so where they use it."},{"from":"phys","to":"disp","color":"back","provenance":"claude","level":"core","assumption":"Damaged homes displace families."},{"from":"disp","to":"land","color":"back","provenance":"claude","level":"core","assumption":"Displaced families land on some rung."},{"from":"nbr","to":"infl","color":"back","provenance":"user","level":"core","assumption":"A declared neighbor sends displaced families into this county."},{"from":"infl","to":"sup","color":"other","provenance":"claude","level":"core","assumption":"Arriving families compete for shelter, hotel rooms and rentals."},{"from":"infl","to":"land","color":"back","provenance":"claude","level":"core","assumption":"Arriving families land on a rung here, and their children are counted here."},{"from":"sup","to":"land","color":"effect","provenance":"user","level":"core","assumption":"What accommodation is available decides where families can land."},{"from":"hhr","to":"land","color":"other","provenance":"user","level":"merged","assumption":"Household size and social network decide which temporary and informal options exist."},{"from":"hh","to":"land","color":"other","provenance":"user","level":"split","assumption":"Household size changes what temporary accommodation can be."},{"from":"soc","to":"land","color":"other","provenance":"user","level":"split","assumption":"A social network decides where families can stay informally."},{"from":"land","to":"exit","color":"other","provenance":"claude","level":"core","assumption":"How hard it is to leave depends on the rung."},{"from":"fin","to":"exit","color":"back","provenance":"user","level":"core","assumption":"Financial security eases exit from temporary accommodation."},{"from":"ins","to":"exit","color":"back","provenance":"user","level":"core","assumption":"Insurance eases exit from temporary accommodation."},{"from":"land","to":"y","color":"effect","provenance":"claude","level":"core","assumption":"Schools count students where they sleep, each school year."},{"from":"exit","to":"y","color":"effect","provenance":"claude","level":"core","assumption":"Time on a rung decides how long the count stays elevated."}],"setAside":["Identification effort / visibility (the rival)","Local emergency-management capacity","Housing stock (mobile homes, age, elevation)","Poverty profile (IA factor)","State fiscal and response capacity","Recent prior disasters (a design rule: three clean years)","Pre-storm accommodation: tenure, housing type, already doubled-up","Formal safety net (SNAP, TANF, vouchers, DUA)","Storm-caused job loss","Car and transport","Health and disability","Immigration status","Federal education response","Storm timing in the school calendar","Pre-storm trend (the parallel-trends assumption)"]};
+const LINKS = {"fs118":{"url":"https://eddataexpress.ed.gov/","docs":"https://nche.ed.gov/wp-content/uploads/2022/08/2022-data-FS-118.pdf","verified":false,"note":"ED Data Express loaded and has McKinney-Vento dashboard and Data Download Tool, but the page does not name FS118; docs link (NCHE FS118 spec) came from search, not fetched."},"ccd":{"url":"https://nces.ed.gov/ccd/","docs":"https://nces.ed.gov/ccd/online_documentation.asp","verified":true,"note":"CCD landing loaded. EDGE district geocodes: https://nces.ed.gov/programs/edge/Geographic/DistrictBoundaries (HTTP 200, not content-checked)."},"dds":{"url":"https://www.fema.gov/openfema-data-page/disaster-declarations-summaries-v2","docs":"https://www.fema.gov/api/open/v1/OpenFemaDataSetFields?$filter=openFemaDataSet%20eq%20%27DisasterDeclarationsSummaries%27%20and%20datasetVersion%20eq%202","verified":true},"ha":{"url":"https://www.fema.gov/openfema-data-page/housing-assistance-program-data-owners-v2","verified":true,"note":"Owners v2 page verified; Renters v2 page (…/housing-assistance-program-data-renters-v2) returned 403 to curl and was not content-checked."},"ihp":{"url":"https://www.fema.gov/openfema-data-page/individuals-and-households-program-valid-registrations-v2","verified":true,"note":"Page lists v2 API, CSV and Parquet downloads; Data Fields section serves as the dictionary."},"noaa":{"url":"https://www.ncei.noaa.gov/stormevents/","docs":"https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/Storm-Data-Bulk-csv-Format.pdf","verified":true,"note":"Redirects to /access/storm-events-database/. Bulk CSVs: https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/"},"acs":{"url":"https://www.census.gov/data/developers/data-sets/acs-5year.html","docs":"https://www.census.gov/programs-surveys/acs/technical-documentation.html","verified":true,"note":"API landing (2009-2024). Technical documentation URL returned 200, not content-checked."},"zori":{"url":"https://www.zillow.com/research/data/","verified":false,"note":"Landing page returned 403 to automated fetch. County ZORI CSV resolves (HTTP 200): https://files.zillowstatic.com/research/public_csvs/zori/County_zori_uc_sfrcondomfr_sm_month.csv"},"fmr":{"url":"https://www.huduser.gov/portal/node/6633","verified":false,"note":"HUD USER blocks automated fetch (HTTP 202 challenge). URL from search results describes FY2026 50th percentile rents by county/area with ReadMe files; not loaded."},"pit":{"url":"https://www.huduser.gov/portal/node/8325","verified":false,"note":"HUD Exchange 'PIT and HIC Data Since 2007' resource URLs returned 404; this HUD USER node surfaced in search for that title but could not be loaded."},"bps":{"url":"https://www.census.gov/construction/bps/","verified":true,"note":"Page offers county ASCII files and technical documentation/definitions links."},"evl":{"url":"https://data-downloads.evictionlab.org/","verified":true,"note":"Eviction Lab download hub loaded (ODC-BY, methods link); file listing empty in capture so county filing file not confirmed. evictionlab.org pages returned 403."},"hurdat":{"url":"https://www.nhc.noaa.gov/data/#hurdat","docs":"https://www.nhc.noaa.gov/data/hurdat/hurdat2-format-atl-1851-2021.pdf","verified":true,"note":"Atlantic HURDAT2 1851-2025 listed; format PDF is the 1851-2021 edition (HTTP 200)."},"ihpfull":{"url":"https://www.fema.gov/openfema-data-page/individuals-and-households-program-valid-registrations-v2","verified":true,"note":"Same dataset page as ihp; confirm household/income/insurance field names in its Data Fields section."},"nfip":{"url":"https://www.fema.gov/openfema-data-page/fima-nfip-redacted-policies-v2","verified":true,"note":"v2 page loaded but is deprecated (removal by Oct 15, 2026); successor …/nfip-redacted-policies-v3 returned 403 and was not checked."},"pda":{"url":"https://www.fema.gov/disaster/how-declared/preliminary-damage-assessments/reports","verified":true,"note":"PDA reports for major disaster requests from FY2008."},"fedreg":{"url":"https://www.federalregister.gov/documents/2026/04/28/2026-08224/notice-of-adjustment-of-statewide-per-capita-indicator-for-recommending-a-cost-share-adjustment","verified":false,"note":"Found via search (statewide indicator, 91 FR 22844); federalregister.gov redirected to an unblock page so it did not load. Countywide notices are separate annual FR notices (e.g. govinfo FR-2024-10-24 2024-24697)."},"elect":{"url":"https://electionlab.mit.edu/data","verified":true,"note":"Lists County Presidential Election Returns 2000-2024."},"hic":{"url":"https://www.huduser.gov/portal/node/8325","verified":false,"note":"Same PIT/HIC source as pit; HUD Exchange URLs returned 404 and this node could not be loaded."},"cbp":{"url":"https://www.census.gov/programs-surveys/cbp.html","docs":"https://www.census.gov/programs-surveys/cbp/technical-documentation.html","verified":true,"note":"Datasets (CSV): https://www.census.gov/programs-surveys/cbp/data/datasets.html"},"acsvac":{"url":"https://www.census.gov/programs-surveys/acs/data/data-tables.html","verified":false,"note":"Landing returned 200 but not content-checked; data.census.gov table pages did not render. Tables expected: B25004 (vacancy status), B25010 (avg household size), B11005 (households with children)."},"adj":{"url":"https://www.census.gov/geographies/reference-files/time-series/geo/county-adjacency.html","verified":true,"note":"Page shows 2026 file with tabs for 2025, 2024, 2023, 2010; 2020 vintage not confirmed."},"sba":{"url":"https://data.sba.gov/dataset/disaster-loan-data","verified":true,"note":"One spreadsheet per fiscal year FY2000-FY2022."},"cdbg":{"url":"https://www.hud.gov/hud-partners/community-cdbg-dr-reports","verified":true,"note":"HUD.gov monthly CDBG-DR reports (grant history, financial reports). hudexchange.info/programs/cdbg-dr/ returned 404."}};
+
+// Layout only: box centres on the 1400 x 712 canvas, chosen so that no arrow crosses a box and no label
+// collides at any expansion level. Content (nodes, edges, text) comes from the spec untouched.
+const LAYOUT = {
+  int:[100,70], phys:[295,70], asd:[505,70], ia:[820,70], req:[1100,70], dec:[1320,70],
+  nbr:[175,165], time:[1085,165], fema:[1095,260],
+  ins:[110,340], disp:[450,340], hh:[635,340], hhr:[790,340], soc:[805,340], act:[1185,340],
+  infl:[230,440], dtim:[1270,440], land:[915,500], sup:[565,555], y:[1220,555],
+  fin:[110,660], exit:[1105,660]
+};
+const WRAP = {asd:['Assessed uninsured', 'damage']};   // a two-line label, same words
+// Display names where the spec splits one name across l and s (the box keeps the split; cards, links and labels join the same words)
+const FULL_IDS = ['infl'];
+const BASE = {0:{split:false, removed:false, fold:true}, 1:{split:false, removed:false, fold:false},
+              2:{split:true, removed:false, fold:false}, 3:{split:true, removed:true, fold:false}};
+const VBW = 1400, VBH = 712, H = 48, GAP = 3, BR = 8;
+const FS = {l:13, s:11, n:11, tag:11, blab:11.5, pill:11};   // SVG text sizes; keep in step with the CSS below
+const EC = {effect:'#2a78d6', back:'#eb6834', other:'#8a8984'};
+const COV = {in:'Measured, in hand', proxy:'Proxy only, in hand', avail:'Available, not pulled', none:'No data'};
+const PROV = {user:'Stated by the author', claude:'Proposed by Claude, accepted by the author'};
+const DSSTAT = {in:'In hand', avail:'Available, not pulled'};
+
+const DS = Object.fromEntries(G.datasets.map(d => [d.id, d]));
+const ND = Object.fromEntries(G.nodes.map(n => [n.id, n]));
+const FULL = Object.fromEntries(FULL_IDS.filter(id => ND[id] && ND[id].s).map(id => [id, `${ND[id].l} ${ND[id].s}`]));
+const nm = id => FULL[id] || ND[id].l;
+for (const n of G.nodes) if (LAYOUT[n.id]) [n.x, n.y] = LAYOUT[n.id];
+const parseRule = s => Object.fromEntries((s || '').replace(/\.\s*$/, '').split(/;\s*(?=\w+ = )/).map(x => { const i = x.indexOf(' = '); return [x.slice(0, i).trim(), x.slice(i + 3).trim()]; }));
+const COLORTXT = parseRule(G.rules && G.rules.color);
+const cap = s => s ? s[0].toUpperCase() + s.slice(1) : s;
+const COLORNAME = {effect:'Effect', back:'Back door', other:'Other'};
+
+// ------------------------------------------------------------------ helpers
+const $ = id => R.getElementById(id);
+const h = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+const S = (t, a, p) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; };
+const dot = st => { const d = h('span', 'dot ' + st); d.setAttribute('aria-hidden', 'true'); return d; };
+const btn = (cls, text, fn, label) => { const b = h('button', cls, text); b.type = 'button'; if (label) b.setAttribute('aria-label', label); b.addEventListener('click', fn, ON); return b; };
+const activate = (el, fn) => {
+  el.addEventListener('click', ev => { ev.stopPropagation(); fn(ev); }, ON);
+  el.addEventListener('keydown', ev => { if (ev.target === el && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); ev.stopPropagation(); fn(ev); } }, ON);
+};
+const nodeDs = n => [...new Set([...n.data.map(d => d.ds), ...n.items.flatMap(i => i.ds)])];
+const coverage = n => {
+  const d = n.data.filter(x => DS[x.ds]);
+  if (d.some(x => DS[x.ds].status === 'in' && !x.proxy)) return 'in';
+  if (d.some(x => DS[x.ds].status === 'in')) return 'proxy';
+  return nodeDs(n).some(id => DS[id] && DS[id].status === 'avail') ? 'avail' : 'none';
+};
+const safeUrl = u => typeof u === 'string' && /^https?:\/\//i.test(u) ? u : null;
+const reduced = () => { try { return matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; } };
+
+// ------------------------------------------------------------------ state
+const st = {level:0, ov:{split:null, removed:null, med:new Map()}, ds:new Set(), cards:[], opener:null};
+let E = null;            // effective view of the current state
+let prevEdgeKeys = null;   // null until the first draw: nothing fades in on load
+
+function visibleAt(split, removed) {
+  const vis = new Set(G.nodes.filter(n => {
+    if (n.level === 'removed') return removed;
+    if (n.level === 'split') return split;
+    if (n.splitInto) return !split;
+    return true;
+  }).map(n => n.id));
+  const edges = G.edges.filter(e => vis.has(e.from) && vis.has(e.to) &&
+    (e.level === 'removed' ? removed : e.level === 'split' ? split : e.level === 'merged' ? !split : true));
+  return {vis, edges};
+}
+// Ch. 7 mediator rule, computed over the edges visible now: one arrow in, one arrow out, not T or Y.
+function mediators(vis, edges) {
+  const I = {}, O = {};
+  for (const e of edges) { (O[e.from] ||= []).push(e); (I[e.to] ||= []).push(e); }
+  const med = new Set([...vis].filter(id => id !== G.treatment && id !== G.outcome && (I[id] || []).length === 1 && (O[id] || []).length === 1));
+  return {med, I, O};
+}
+function effective(level, ov) {
+  const b = BASE[level];
+  const split = ov.split ?? b.split, removed = ov.removed ?? b.removed;
+  const {vis, edges} = visibleAt(split, removed);
+  const {med, I, O} = mediators(vis, edges);
+  const folded = new Set([...med].filter(id => ov.med.has(id) ? ov.med.get(id) === 'fold' : b.fold));
+  return {split, removed, vis, edges, med, I, O, folded};
+}
+const sameSet = (a, b) => a.size === b.size && [...a].every(x => b.has(x));
+const sameView = (a, b) => a.split === b.split && a.removed === b.removed && sameSet(a.folded, b.folded);
+const NOOV = () => ({split:null, removed:null, med:new Map()});
+function hasOv() { return st.ov.split != null || st.ov.removed != null || st.ov.med.size > 0; }
+// Fold per-element changes back into a level whenever the view equals one.
+function normalise() {
+  if (!hasOv()) return;
+  const cur = effective(st.level, st.ov);
+  for (const k of [st.level, 0, 1, 2, 3]) if (sameView(cur, effective(k, NOOV()))) { st.level = k; st.ov = NOOV(); return; }
+  // drop overrides that restate the base
+  const b = BASE[st.level];
+  if (st.ov.split === b.split) st.ov.split = null;
+  if (st.ov.removed === b.removed) st.ov.removed = null;
+  for (const [id, v] of [...st.ov.med]) if (!cur.med.has(id) || (v === 'fold') === b.fold) st.ov.med.delete(id);
+}
+const isCustom = () => hasOv();
+const shown = id => E.vis.has(id) && !E.folded.has(id);
+
+// ------------------------------------------------------------------ static chrome
+const app = $('dag-app');
+if (STANDALONE) app.setAttribute('data-standalone', '');
+const svg = $('dag-svg'), stage = $('dag-stage'), scroller = $('dag-scroller');
+const drawer = $('dag-drawer'), body = $('dag-body'), kindEl = $('dag-kind'), backB = $('dag-back'), closeB = $('dag-close');
+
+// expansion control
+const seg = $('dag-seg');
+const segBtns = [];
+for (const lv of G.levels) {
+  const b = btn('', lv.name, () => setLevel(lv.id));
+  b.setAttribute('role', 'radio'); b.title = lv.desc; b.dataset.level = lv.id;
+  b.setAttribute('aria-describedby', 'dag-hint');
+  seg.append(b); segBtns.push(b);
+}
+const custB = h('button', 'cust', 'Custom'); custB.type = 'button'; custB.setAttribute('role', 'radio'); custB.setAttribute('aria-disabled', 'true'); custB.hidden = true; custB.tabIndex = -1;
+custB.title = 'Per-element changes depart from the level'; seg.append(custB);
+seg.addEventListener('keydown', ev => {
+  const i = segBtns.indexOf(ev.target); if (i < 0) return;
+  const d = ev.key === 'ArrowRight' || ev.key === 'ArrowDown' ? 1 : ev.key === 'ArrowLeft' || ev.key === 'ArrowUp' ? -1 : 0;
+  if (!d) return; ev.preventDefault();
+  const j = (i + d + segBtns.length) % segBtns.length; setLevel(+segBtns[j].dataset.level); segBtns[j].focus();
+}, ON);
+
+const tbr = $('dag-tbr');
+const medCount = h('span');
+const openAllB = btn('lnk', 'Open all', () => { for (const id of E.med) st.ov.med.set(id, 'open'); update(); }, 'Open every mediator as a node');
+const foldAllB = btn('lnk', 'Fold all', () => { for (const id of E.med) st.ov.med.set(id, 'fold'); update(); }, 'Fold every mediator into its arrow');
+const remB = btn('tog', '', () => { st.ov.removed = !E.removed; update(); });
+const aboutB = btn('lnk', 'About this diagram', () => openCard({t:'about'}, aboutB));
+tbr.append(medCount, openAllB, foldAllB, remB, aboutB);
+
+// datasets bar
+const dsbar = $('dag-dsbar');
+const chipEls = {};
+for (const [stt, label] of [['in', 'In hand'], ['avail', 'Available, not pulled']]) {
+  const g = h('div', 'grp'); g.append(h('span', 'grp-l', label));
+  for (const d of G.datasets.filter(x => x.status === stt)) {
+    const b = btn('chip', null, () => toggleDs(d.id, b));
+    b.setAttribute('aria-pressed', 'false'); b.title = `${d.name} (${DSSTAT[d.status]})`;
+    b.append(dot(d.status), document.createTextNode(d.short));
+    chipEls[d.id] = b; g.append(b);
+  }
+  dsbar.append(g);
+}
+const clearB = btn('lnk', 'Clear', () => { st.ds.clear(); const c = topCard(); if (c && (c.t === 'sel')) closeCard(); else update(); }, 'Clear the dataset selection');
+dsbar.append(clearB);
+
+// legend
+const lg = $('dag-legend');
+function lgGroup(title, items) {
+  const g = h('div', 'lg'); g.append(h('span', 'lg-l', title));
+  for (const [mk, text] of items) { const s = h('span'); s.append(mk, document.createTextNode(text)); g.append(s); }
+  lg.append(g);
+}
+const swatch = (c, dashed) => { const i = h('i', 'sw'); i.style.borderTopColor = c; if (dashed) i.style.borderTopStyle = 'dashed'; return i; };
+const boxk = (style, color) => { const i = h('i', 'bx'); if (style) i.style.borderStyle = style; if (color) i.style.borderColor = color; return i; };
+lgGroup('Arrows', [[swatch('var(--effect)'), 'Effect: the declaration’s own routes'], [swatch('var(--back)'), 'Back door'], [swatch('var(--other)'), 'Other']]);
+lgGroup('Drawn by', [[swatch('var(--ink2)'), 'the author (solid)'], [swatch('var(--ink2)', true), 'Claude, accepted by the author (dashed)']]);
+lgGroup('Data', [[dot('in'), COV.in], [dot('proxy'), COV.proxy], [dot('avail'), COV.avail], [dot('none'), COV.none], [h('i', 'cnt', '3'), 'datasets paired']]);
+{ const k = h('i', 'beadkey', '+'); k.setAttribute('aria-hidden', 'true');
+  const t = boxk(null, 'var(--effect)'); t.style.borderWidth = '2.4px'; const y = boxk(null, 'var(--ink)'); y.style.borderWidth = '2.4px';
+  const gh = boxk('dashed'); gh.style.opacity = '.75';
+  lgGroup('Boxes', [[t, 'Treatment'], [y, 'Outcome'], [boxk('dashed'), 'Unobserved'], [boxk('dashed', 'var(--back)'), 'Added by Claude'], [gh, 'Removed: irrelevant'], [k, 'Folded mediator: click to open']]); }
+
+$('dag-foot').textContent = `Source: ${G.source}. Diagram built with Claude from the author’s design decisions.`;
+
+// ------------------------------------------------------------------ svg scaffolding
+const defs = S('defs', {}, svg);
+for (const [k, c] of Object.entries(EC)) {
+  const m = S('marker', {id:'dagm-' + k, viewBox:'0 0 10 10', refX:'9', refY:'5', markerWidth:'10', markerHeight:'10', markerUnits:'userSpaceOnUse', orient:'auto'}, defs);
+  S('path', {d:'M0,0.6 L10,5 L0,9.4 z', fill:c, class:'mk-' + k}, m);
+}
+const bandG = S('g', {'aria-hidden':'true'}, svg);
+S('line', {class:'bandline', x1:30, x2:VBW, y1:302, y2:302}, bandG);
+S('text', {class:'band', x:0, y:0, transform:'translate(14,152) rotate(-90)', 'text-anchor':'middle'}, bandG).textContent = 'How a county is declared';
+S('text', {class:'band', x:0, y:0, transform:'translate(14,505) rotate(-90)', 'text-anchor':'middle'}, bandG).textContent = 'Where families land, and for how long';
+const edgesG = S('g', {'aria-hidden':'true'}, svg);
+const hitG = S('g', {}, svg);
+const slotsG = S('g', {}, svg);
+
+// measure text once (falls back to an estimate when the pane is not laid out yet)
+const measure = (text, size, weight) => {
+  const t = S('text', {'font-size':size, 'font-weight':weight, x:-9999, y:-9999}, svg); t.textContent = text;
+  let w = 0; try { w = t.getComputedTextLength(); } catch (e) {}
+  t.remove(); return w > 0 ? Math.ceil(w) : Math.ceil(text.length * size * 0.56);
+};
+for (const n of G.nodes) {
+  const lines = WRAP[n.id] || [n.l];
+  const lw = Math.max(...lines.map(s => measure(s, FS.l, 600)));
+  n.w = Math.max(140, lw + 44, n.s ? measure(n.s, FS.s, 400) + 24 : 0);
+  n.bt = nm(n.id) + (n.level === 'removed' ? ' (removed)' : '');   // bead label
+  n.bw = measure(n.bt, FS.blab, 500);
+  n.lines = lines;
+}
+
+// ------------------------------------------------------------------ nodes, beads and control pills (persistent)
+const nodeEls = {}, beadEls = {}, pillEls = {};
+const slots = {};
+for (const n of [...G.nodes].sort((a, b) => a.y - b.y || a.x - b.x)) {
+  const slot = S('g', {class:'slot'}, slotsG); slots[n.id] = slot;
+  const g = S('g', {class:'node ' + (n.c || '') + (n.level === 'removed' ? ' ghost' : ''), tabindex:'0', role:'button'}, slot);
+  g.dataset.id = n.id;
+  S('title', {}, g).textContent = nm(n.id) + (n.s && !FULL[n.id] ? ` (${n.s})` : '');
+  S('rect', {class:'ring', x:-4, y:-4, width:n.w + 8, height:H + 8, rx:10}, g);
+  S('rect', {class:'b', width:n.w, height:H, rx:7}, g);
+  const cv = coverage(n);
+  S('circle', cv === 'none' ? {cx:12, cy:12, r:4, fill:'none', stroke:'var(--none)', 'stroke-width':1.5}
+    : cv === 'proxy' ? {cx:12, cy:12, r:3.8, fill:'none', stroke:'var(--good)', 'stroke-width':2}
+    : {cx:12, cy:12, r:4.5, fill:cv === 'in' ? 'var(--good)' : 'var(--warn)'}, g);
+  const two = n.lines.length > 1 || n.s;
+  n.lines.forEach((s, i) => { S('text', {class:'l', x:n.w / 2, y:two ? 20 + i * 16 : 29, 'text-anchor':'middle'}, g).textContent = s; });
+  if (n.s) S('text', {class:'s', x:n.w / 2, y:37, 'text-anchor':'middle'}, g).textContent = n.s;
+  const k = nodeDs(n).length; if (k) S('text', {class:'n', x:n.w - 8, y:14, 'text-anchor':'end'}, g).textContent = k;
+  if (n.level === 'removed') { g._tag = S('text', {class:'tag', x:n.w / 2, y:H + 14, 'text-anchor':'middle'}, g); g._tag.textContent = 'removed: irrelevant'; n.tw = measure('removed: irrelevant', FS.tag, 400) + 4; }
+  g.setAttribute('aria-label', `${nm(n.id)}${n.s && !FULL[n.id] ? ', ' + n.s : ''}. ${cap(n.role)}. Data: ${COV[cv]}.${n.level === 'removed' ? ' Removed as irrelevant.' : ''} Open its card.`);
+  nodeEls[n.id] = g;
+  activate(g, () => openCard({t:'node', id:n.id}, g));
+  g.addEventListener('mouseenter', () => isolate({node:n.id}), ON);
+  g.addEventListener('mouseleave', () => isolate(null), ON);
+  g.addEventListener('focus', () => isolate({node:n.id}), ON);
+  g.addEventListener('blur', () => isolate(null), ON);
+}
+function bead(id) {
+  if (beadEls[id]) return beadEls[id];
+  const n = ND[id], rem = n.level === 'removed';
+  // a removed node folds like any other pass-through when removed nodes are shown: its bead is ghosted like its box
+  const g = S('g', {class:'bead off' + (rem ? ' ghost' : ''), tabindex:'0', role:'button',
+    'aria-label':`Folded mediator: ${nm(id)}${rem ? ', removed as irrelevant' : ''}. Open it as a node.`});
+  slots[id].insertBefore(g, slots[id].firstChild);
+  S('title', {}, g).textContent = `${nm(id)}: folded mediator${rem ? ', removed as irrelevant' : ''}. Click to open it as a node.`;
+  S('circle', {class:'bhit', r:14}, g);
+  const c = S('circle', {class:'bd', r:BR}, g);
+  const p = S('path', {class:'plus', d:'M-3.5,0 H3.5 M0,-3.5 V3.5'}, g);
+  const lab = S('text', {class:'blab'}, g); lab.textContent = n.bt;
+  g._c = c; g._p = p; g._lab = lab;
+  g.style.transform = `translate(${n.x}px,${n.y}px)`;
+  activate(g, () => { st.ov.med.set(id, 'open'); update(); focusLater(() => nodeEls[id]); });
+  g.addEventListener('mouseenter', () => isolate({bead:id}), ON);
+  g.addEventListener('mouseleave', () => isolate(null), ON);
+  g.addEventListener('focus', () => isolate({bead:id}), ON);
+  g.addEventListener('blur', () => isolate(null), ON);
+  return (beadEls[id] = g);
+}
+function pill(id) {
+  if (pillEls[id]) return pillEls[id];
+  const g = S('g', {class:'pill off', tabindex:'0', role:'button'}, slots[id]);
+  g._r = S('rect', {height:16, rx:8}, g);
+  g._t = S('text', {y:12, 'text-anchor':'middle'}, g);
+  g._title = S('title', {}, g);
+  activate(g, () => pillAction(id));
+  return (pillEls[id] = g);
+}
+function pillKind(id) {
+  if (!shown(id)) return null;
+  if (E.med.has(id)) return 'fold';
+  if (ND[id].splitInto) return 'split';
+  if (ND[id].mergedInto) return 'merge';
+  return null;
+}
+function pillAction(id) {
+  const k = pillKind(id);
+  if (k === 'fold') { st.ov.med.set(id, 'fold'); update(); focusLater(() => beadEls[id]); }
+  if (k === 'split') { st.ov.split = true; update(); focusLater(() => nodeEls[ND[id].splitInto[0]]); }
+  if (k === 'merge') { st.ov.split = false; update(); focusLater(() => nodeEls[ND[id].mergedInto]); }
+}
+const PILL = {fold:['fold', n => `Fold ${nm(n.id)} into its arrow`], split:['split', n => `Split ${nm(n.id)} into ${n.splitInto.map(i => nm(i).toLowerCase()).join(' and ')}`],
+              merge:['merge', n => `Merge ${nm(n.id)} back into ${nm(n.mergedInto)}`]};
+// update() is synchronous, so the element is focusable now; retry on the next frame in case styles lag
+function focusLater(get) {
+  const go = () => { const el = get(); if (el && el.isConnected) el.focus({preventScroll:true}); return el && R.activeElement === el; };
+  if (!go()) requestAnimationFrame(go);
+}
+
+// ------------------------------------------------------------------ geometry
+const pos = id => ND[id];
+function anchorPt(id, toward) {
+  const n = ND[id], dx = toward.x - n.x, dy = toward.y - n.y;
+  if (E.folded.has(id)) { const L = Math.hypot(dx, dy) || 1; return [n.x + dx / L * (BR + 1), n.y + dy / L * (BR + 1)]; }
+  const t = Math.min((n.w / 2 + GAP) / Math.abs(dx || 1e-9), (H / 2 + GAP) / Math.abs(dy || 1e-9));
+  return [n.x + dx * t, n.y + dy * t];
+}
+const boxOf = (id, pad = 0) => { const n = ND[id]; return [n.x - n.w / 2 - pad, n.y - H / 2 - pad, n.x + n.w / 2 + pad, n.y + H / 2 + pad]; };
+function segRect(x1, y1, x2, y2, b) {
+  let t0 = 0, t1 = 1; const dx = x2 - x1, dy = y2 - y1;
+  const p = [-dx, dx, -dy, dy], q = [x1 - b[0], b[2] - x1, y1 - b[1], b[3] - y1];
+  for (let i = 0; i < 4; i++) {
+    if (p[i] === 0) { if (q[i] < 0) return false; }
+    else { const t = q[i] / p[i]; if (p[i] < 0) { if (t > t1) return false; if (t > t0) t0 = t; } else { if (t < t0) return false; if (t < t1) t1 = t; } }
+  }
+  return t1 - t0 > 1e-6;
+}
+const rectsOverlap = (a, b) => a[0] < b[2] && b[0] < a[2] && a[1] < b[3] && b[1] < a[3];
+const ekey = e => `${e.from}-${e.to}`;
+const EDGE = Object.fromEntries(G.edges.map(e => [ekey(e), e]));
+
+// a folded route: the chain of drawn edges through folded mediators that contains e
+function routeOf(e) {
+  const out = [e]; let c = e;
+  while (E.folded.has(c.from)) { c = E.I[c.from][0]; out.unshift(c); }
+  c = e; while (E.folded.has(c.to)) { c = E.O[c.to][0]; out.push(c); }
+  return out;
+}
+
+// ------------------------------------------------------------------ drawing
+let edgeEls = {}, segs = [];
+function drawEdges() {
+  edgesG.replaceChildren(); hitG.replaceChildren(); edgeEls = {}; segs = [];
+  const keys = new Set();
+  for (const e of E.edges) {
+    const a = anchorPt(e.from, pos(e.to)), b = anchorPt(e.to, pos(e.from));
+    const ghost = ND[e.from].level === 'removed' || ND[e.to].level === 'removed';
+    const k = ekey(e); keys.add(k);
+    const cls = `edge c-${e.color} p-${e.provenance}${ghost ? ' ghost' : ''}${!prevEdgeKeys || prevEdgeKeys.has(k) ? '' : ' enter'}`;
+    const d = `M${a[0].toFixed(1)},${a[1].toFixed(1)} L${b[0].toFixed(1)},${b[1].toFixed(1)}`;
+    const p = S('path', {class:cls, d}, edgesG);
+    if (!E.folded.has(e.to)) p.setAttribute('marker-end', `url(#dagm-${e.color})`);
+    p.dataset.key = k; edgeEls[k] = p;
+    segs.push({e, a, b});
+    const hp = S('path', {class:'hit', d}, hitG);
+    S('title', {}, hp).textContent = `${nm(e.from)} → ${nm(e.to)}: ${e.assumption}`;
+    hp.addEventListener('click', ev => { ev.stopPropagation(); openCard({t:'edge', key:k}, null); }, ON);
+    hp.addEventListener('mouseenter', () => isolate({edge:k}), ON);
+    hp.addEventListener('mouseleave', () => isolate(null), ON);
+  }
+  prevEdgeKeys = keys;
+}
+const LABEL_SPOTS = [[0, -14, 'middle'], [0, 23, 'middle'], [14, 4, 'start'], [-14, 4, 'end'], [0, -26, 'middle'], [0, 35, 'middle']];
+const placed = [];
+function labelRect(n, s) {
+  const [dx, dy, anc] = s, w = n.bw, x = n.x + dx, y = n.y + dy;
+  const x0 = anc === 'middle' ? x - w / 2 : anc === 'start' ? x : x - w;
+  return [x0 - 3, y - 12, x0 + w + 3, y + 4];
+}
+function drawBeads() {
+  placed.length = 0;
+  const boxes = [...E.vis].filter(shown).map(id => boxOf(id, 3));
+  for (const n of G.nodes) {
+    const on = E.folded.has(n.id);
+    if (!on) { if (beadEls[n.id]) beadEls[n.id].classList.add('off'); continue; }
+    const g = bead(n.id); g.classList.remove('off');
+    const col = EC[E.I[n.id][0].color];
+    g._c.setAttribute('stroke', col); g._p.setAttribute('stroke', col);
+    // label: the first spot that touches no box, no other label and no arrow
+    let best = null, bestScore = 1e9;
+    for (const s of LABEL_SPOTS) {
+      const r = labelRect(n, s);
+      let sc = 0;
+      if (r[0] < 24 || r[2] > VBW - 4 || r[1] < 2 || r[3] > VBH - 2) sc += 100;
+      for (const b of boxes) if (rectsOverlap(r, b)) sc += 50;
+      for (const q of placed) if (rectsOverlap(r, q)) sc += 50;
+      for (const sg of segs) if (segRect(sg.a[0], sg.a[1], sg.b[0], sg.b[1], r)) sc += (sg.e.from === n.id || sg.e.to === n.id) ? 4 : 3;
+      if (sc < bestScore) { bestScore = sc; best = s; }
+      if (sc === 0) break;
+    }
+    const r = labelRect(n, best); placed.push(r);
+    g._lab.setAttribute('x', best[0]); g._lab.setAttribute('y', best[1]); g._lab.setAttribute('text-anchor', best[2]);
+    g._labRect = r;
+  }
+}
+function drawNodes() {
+  for (const n of G.nodes) {
+    const g = nodeEls[n.id], on = shown(n.id);
+    g.classList.toggle('off', !on);
+    g.setAttribute('tabindex', on ? '0' : '-1');
+    if (on) g.removeAttribute('aria-hidden'); else g.setAttribute('aria-hidden', 'true');
+    // split nodes travel out of (and back into) their merged parent
+    const home = !on && n.mergedInto ? ND[n.mergedInto] : n;
+    g.style.transform = `translate(${home.x - n.w / 2}px,${home.y - H / 2}px)`;
+  }
+}
+// the ghost tag of a removed node goes at the first spot around its box that no arrow or box touches
+function drawTags() {
+  const boxes = [...E.vis].filter(shown).map(id => [id, boxOf(id, 2)]);
+  for (const n of G.nodes) {
+    const g = nodeEls[n.id]; if (!g._tag) continue;
+    n._tagRect = null; if (!shown(n.id)) continue;
+    const L = n.x - n.w / 2, T = n.y - H / 2, tw = n.tw;
+    // [x of text anchor in box coords, baseline y in box coords, anchor]
+    const spots = [[n.w / 2, H + 14, 'middle'], [2, H + 14, 'start'], [n.w - 2, H + 14, 'end'], [2, -6, 'start'], [n.w - 2, -6, 'end']];
+    let best = spots[0], bs = 1e9, br = null;
+    for (const sp of spots) {
+      const x0 = L + (sp[2] === 'middle' ? sp[0] - tw / 2 : sp[2] === 'start' ? sp[0] : sp[0] - tw);
+      const r = [x0, T + sp[1] - 12, x0 + tw, T + sp[1] + 4]; let sc = 0;
+      for (const sg of segs) if (segRect(sg.a[0], sg.a[1], sg.b[0], sg.b[1], r)) sc += 10;
+      for (const [id, b] of boxes) if (id !== n.id && rectsOverlap(r, b)) sc += 50;
+      for (const q of placed) if (rectsOverlap(r, q)) sc += 50;
+      if (sc < bs) { bs = sc; best = sp; br = r; }
+      if (!sc) break;
+    }
+    g._tag.setAttribute('x', best[0]); g._tag.setAttribute('y', best[1]); g._tag.setAttribute('text-anchor', best[2]);
+    n._tagRect = br; placed.push(br);
+  }
+}
+// control pills sit on the box edge, at the first spot no arrow, box, tag or label touches
+function drawPills() {
+  const boxes = [...E.vis].filter(shown).map(id => [id, boxOf(id, 2)]);
+  for (const n of G.nodes) {
+    const k = pillKind(n.id);
+    if (!k && !pillEls[n.id]) continue;
+    const p = pill(n.id);
+    p.classList.toggle('off', !k);
+    p.setAttribute('tabindex', k ? '0' : '-1');
+    if (!k) continue;
+    const [txt, lab] = PILL[k]; const w = Math.max(38, measureCache(txt) + 16);
+    p._t.textContent = txt; p._r.setAttribute('width', w); p._t.setAttribute('x', w / 2);
+    p.setAttribute('aria-label', lab(n)); p._title.textContent = lab(n);
+    const L = n.x - n.w / 2, T = n.y - H / 2, inset = w / 2 + 6;
+    const spots = [[n.x, T + H], [L + inset, T + H], [L + n.w - inset, T + H], [n.x, T], [L + inset + 14, T], [L + n.w - inset - 14, T]];
+    let best = spots[0], bs = 1e9;
+    for (const [cx, cy] of spots) {
+      const r = [cx - w / 2, cy - 8, cx + w / 2, cy + 8]; let sc = 0;
+      for (const sg of segs) if (segRect(sg.a[0], sg.a[1], sg.b[0], sg.b[1], [r[0] - 2, r[1] - 2, r[2] + 2, r[3] + 2])) sc += 10;
+      for (const [id, b] of boxes) if (id !== n.id && rectsOverlap(r, b)) sc += 50;
+      for (const q of placed) if (rectsOverlap(r, q)) sc += 50;
+      if (sc < bs) { bs = sc; best = [cx, cy]; }
+      if (!sc) break;
+    }
+    p.style.transform = `translate(${best[0] - w / 2}px,${best[1] - 8}px)`;
+    p._rect = [best[0] - w / 2, best[1] - 8, best[0] + w / 2, best[1] + 8];
+  }
+}
+const mc = {};
+const measureCache = t => (mc[t] ??= measure(t, FS.pill, 600));
+
+// ------------------------------------------------------------------ highlight: hover isolation and dataset selection
+function isolate(what) {
+  for (const el of svg.querySelectorAll('.hi')) el.classList.remove('hi');
+  const c = topCard();
+  if (!what && c && c.t === 'edge' && E.edges.includes(EDGE[c.key])) what = {edge:c.key};
+  if (!what) { svg.classList.remove('iso'); return; }
+  const routes = [];
+  if (what.node) for (const e of E.edges) { if (e.from === what.node || e.to === what.node) routes.push(routeOf(e)); }
+  if (what.bead) routes.push(routeOf(E.I[what.bead][0]));
+  if (what.edge && EDGE[what.edge]) routes.push(routeOf(EDGE[what.edge]));
+  const hi = id => { (nodeEls[id] && shown(id) ? nodeEls[id] : beadEls[id])?.classList.add('hi'); };
+  if (what.node) hi(what.node);
+  for (const r of routes) for (const e of r) { edgeEls[ekey(e)]?.classList.add('hi'); hi(e.from); hi(e.to); }
+  svg.classList.add('iso');
+}
+const matches = id => st.ds.size > 0 && nodeDs(ND[id]).some(d => st.ds.has(d));
+function applyDim() {
+  svg.classList.toggle('dim', st.ds.size > 0);
+  for (const n of G.nodes) {
+    const m = matches(n.id);
+    nodeEls[n.id].classList.toggle('dm', m);
+    if (beadEls[n.id]) beadEls[n.id].classList.toggle('dm', m);
+  }
+  for (const e of E.edges) edgeEls[ekey(e)]?.classList.toggle('dm', matches(e.from) && matches(e.to));
+}
+
+// ------------------------------------------------------------------ state changes
+function setLevel(k) { st.level = k; st.ov = NOOV(); update(); }
+function toggleDs(id, opener) {
+  if (st.ds.has(id)) {
+    st.ds.delete(id);
+    const c = topCard();
+    if (c && c.t === 'ds' && c.id === id) closeCard(); else if (c && c.t === 'sel') { if (st.ds.size) update(); else closeCard(); } else update();
+  } else { st.ds.add(id); openCard({t:'ds', id}, opener); }
+}
+function reveal(id) {
+  const n = ND[id]; if (!n) return;
+  if (n.level === 'removed' && !E.removed) st.ov.removed = true;
+  if (n.mergedInto && !E.split) st.ov.split = true;
+  if (n.splitInto && E.split) st.ov.split = false;
+  E = effective(st.level, st.ov);
+  if (E.folded.has(id)) st.ov.med.set(id, 'open');
+}
+
+function update(opts = {}) {
+  normalise();
+  E = effective(st.level, st.ov);
+  drawNodes();
+  drawEdges();
+  drawBeads();
+  drawTags();
+  drawPills();
+  // control state
+  const custom = isCustom();
+  segBtns.forEach(b => { const on = !custom && +b.dataset.level === st.level; b.setAttribute('aria-checked', on ? 'true' : 'false'); b.tabIndex = on || (custom && +b.dataset.level === st.level) ? 0 : -1; });
+  custB.hidden = !custom; custB.setAttribute('aria-checked', custom ? 'true' : 'false');
+  $('dag-hint').replaceChildren(...hintNodes(custom));
+  const nf = [...E.med].filter(id => E.folded.has(id)).length;
+  medCount.textContent = `Mediators: ${nf} of ${E.med.size} folded`;
+  openAllB.disabled = nf === 0; foldAllB.disabled = nf === E.med.size;
+  remB.textContent = `Removed nodes: ${E.removed ? 'shown' : 'hidden'}`; remB.setAttribute('aria-pressed', E.removed ? 'true' : 'false');
+  remB.title = E.removed ? 'Hide the nodes removed as irrelevant' : 'Show the nodes removed as irrelevant, ghosted';
+  for (const [id, b] of Object.entries(chipEls)) b.setAttribute('aria-pressed', st.ds.has(id) ? 'true' : 'false');
+  // selection marks
+  const c = topCard();
+  for (const n of G.nodes) nodeEls[n.id].classList.toggle('sel', !!c && c.t === 'node' && c.id === n.id);
+  if (c && c.t === 'edge' && edgeEls[c.key]) edgeEls[c.key].classList.add('sel');
+  isolate(null); applyDim();
+  if (opts.card !== false) renderCard();
+  writeHash();
+}
+function hintNodes(custom) {
+  const lv = G.levels.find(l => l.id === st.level);
+  if (!custom) { const b = h('b', '', lv.name + ': '); return [b, document.createTextNode(lv.desc)]; }
+  const ch = [];
+  const b = BASE[st.level];
+  if (st.ov.split != null) ch.push(st.ov.split ? 'household resources split' : 'household resources merged');
+  if (st.ov.removed != null) ch.push(st.ov.removed ? 'removed nodes shown' : 'removed nodes hidden');
+  const op = [...st.ov.med].filter(([, v]) => v === 'open').map(([id]) => nm(id)), fo = [...st.ov.med].filter(([, v]) => v === 'fold').map(([id]) => nm(id));
+  if (op.length) ch.push('opened: ' + op.join(', '));
+  if (fo.length) ch.push('folded: ' + fo.join(', '));
+  return [h('b', '', 'Custom: '), document.createTextNode(`${lv.name}, with ${ch.join('; ')}. Pick a level to reset.`)];
+}
+
+// ------------------------------------------------------------------ cards
+const topCard = () => st.cards[st.cards.length - 1] || null;
+const sameCard = (a, b) => a && b && a.t === b.t && a.id === b.id && a.key === b.key;
+function openCard(c, opener, opts = {}) {
+  if (!st.cards.length) st.opener = opener || R.activeElement || null;
+  if (!sameCard(topCard(), c)) st.cards.push(c);
+  update();
+  if (opts.focus !== false) focusCard();
+}
+function focusCard() { const t = $('dag-card-title'); if (t) t.focus({preventScroll: app.hasAttribute('data-wide')}); }
+function closeCard() {
+  const c = st.cards[0]; st.cards = [];
+  update();
+  let el = st.opener; st.opener = null;
+  if (!el || !el.isConnected || el.closest('.off') || el.getAttribute('tabindex') === '-1') {
+    el = c && c.t === 'node' && shown(c.id) ? nodeEls[c.id] : c && c.t === 'ds' ? chipEls[c.id] : svg;
+  }
+  if (el && el.focus) el.focus({preventScroll:true});
+}
+function back() { if (st.cards.length > 1) { st.cards.pop(); update(); focusCard(); } }
+backB.addEventListener('click', back, ON);
+closeB.addEventListener('click', closeCard, ON);
+// Esc closes the card; on the standalone page from anywhere (a deep link opens a card without moving focus into it)
+(STANDALONE ? window : app).addEventListener('keydown', ev => { if (ev.key === 'Escape' && st.cards.length) { ev.preventDefault(); closeCard(); } }, ON);
+svg.addEventListener('click', ev => { if (st.cards.length) closeCard(); }, ON);
+
+function renderCard() {
+  const c = topCard();
+  if (!c) { drawer.hidden = true; body.replaceChildren(); lastPlaced = null; return; }
+  // keep focus on an equivalent control across re-renders
+  const fk = R.activeElement && drawer.contains(R.activeElement) ? R.activeElement.dataset.fk : null;
+  drawer.hidden = false;
+  backB.hidden = st.cards.length < 2;
+  body.replaceChildren();
+  if (c.t === 'node') nodeCard(ND[c.id]);
+  else if (c.t === 'edge') edgeCard(EDGE[c.key]);
+  else if (c.t === 'ds') dsCard(DS[c.id]);
+  else if (c.t === 'sel') selCard();
+  else aboutCard();
+  body.scrollTop = 0;
+  placeDrawer(c);
+  if (fk) { const el = body.querySelector(`[data-fk="${fk}"]`); if (el) el.focus({preventScroll:true}); else focusCard(); }
+}
+// Where the card goes: wide, the drawer docks on the side away from what the card is about; narrow, the
+// diagram scrolls sideways so that it is in view above the sheet.
+function subject(c) {
+  const pts = [];
+  if (c.t === 'node') pts.push([c.id, 1]);
+  else if (c.t === 'edge' && EDGE[c.key]) pts.push([EDGE[c.key].to, 2], [EDGE[c.key].from, 1]);   // the arrow's target matters most
+  else if (c.t === 'ds') G.nodes.filter(n => nodeDs(n).includes(c.id)).forEach(n => pts.push([n.id, 1]));
+  else if (c.t === 'sel') G.nodes.filter(n => matches(n.id)).forEach(n => pts.push([n.id, 1]));
+  return pts.filter(([id]) => E.vis.has(id)).map(([id, w]) => {
+    const n = ND[id], half = E.folded.has(id) ? BR + 2 : n.w / 2;
+    return {x:n.x, x0:n.x - half, x1:n.x + half, w};
+  });
+}
+let lastPlaced = null;
+function placeDrawer(c) {
+  const pts = subject(c), tw = pts.reduce((a, p) => a + p.w, 0);
+  const mx = tw ? pts.reduce((a, p) => a + p.x * p.w, 0) / tw : null;
+  if (app.hasAttribute('data-wide')) {
+    const scale = (svg.getBoundingClientRect().width || VBW) / VBW;
+    const cover = (Math.min(360, stage.clientWidth * 0.4) + 20) / scale;   // drawer width + margins, in diagram units
+    const hides = (side, p) => side === 'left' ? p.x0 < cover : p.x1 > VBW - cover;
+    // the treatment and the outcome count for half a subject box: kept in view when it costs the subject nothing
+    const ty = [G.treatment, G.outcome].filter(id => E.vis.has(id)).map(id => ({x0:ND[id].x - ND[id].w / 2, x1:ND[id].x + ND[id].w / 2, w:.5}));
+    const under = side => [...pts, ...ty].reduce((a, p) => a + (hides(side, p) ? p.w : 0), 0);
+    const l = under('left'), r = under('right');
+    // fewer boxes under the card wins; a tie goes by where the subject sits; no subject (About): left
+    drawer.dataset.side = l !== r ? (l < r ? 'left' : 'right') : mx == null || mx > VBW * 0.55 ? 'left' : 'right';
+  } else {
+    drawer.dataset.side = 'bottom';
+    const key = JSON.stringify(c);
+    if (mx != null && key !== lastPlaced && scroller.scrollWidth > scroller.clientWidth + 1) {
+      const scale = svg.getBoundingClientRect().width / VBW;
+      scroller.scrollTo({left:Math.max(0, mx * scale - scroller.clientWidth / 2), behavior:reduced() || app.classList.contains('boot') ? 'auto' : 'smooth'});
+    }
+    lastPlaced = key;
+  }
+}
+function title(text, ...extra) { const t = h('h2'); t.id = 'dag-card-title'; t.tabIndex = -1; t.append(...extra, document.createTextNode(text)); body.append(t); return t; }
+const sec = text => body.append(h('h3', '', text));
+const nodeLink = (id, label) => btn('nl', label || nm(id), () => openCard({t:'node', id}, null));
+function dsTag(id, extra) {
+  const d = DS[id];
+  const t = btn('tag', null, () => openCard({t:'ds', id}, null), `${d.name}, ${DSSTAT[d.status]}. Open its card.`);
+  t.append(dot(d.status), document.createTextNode(d.short)); if (extra) t.append(extra); return t;
+}
+const noData = () => { const x = h('span', 'tag'); x.append(dot('none'), document.createTextNode('no data')); return x; };
+const actB = (text, fk, fn) => { const b = btn('act', text, fn); b.dataset.fk = fk; return b; };
+function edgeLine(e, dir) {
+  const li = h('li', 'arw');
+  li.append(swatch(`var(--${e.color})`, e.provenance === 'claude'));
+  const other = dir === 'out' ? e.to : e.from;
+  const b = btn('nl', `${dir === 'out' ? '→' : '←'} ${nm(other)}`, () => openCard({t:'edge', key:ekey(e)}, null),
+    `Arrow ${nm(e.from)} to ${nm(e.to)}. Open its card.`);
+  li.append(b);
+  const note = edgeState(e); if (note) li.append(h('span', 'small', note));
+  return li;
+}
+function edgeState(e) {
+  if (!E.edges.includes(e)) return 'not drawn now';
+  const via = [e.from, e.to].filter(id => E.folded.has(id));
+  return via.length ? 'folded' : '';
+}
+
+function nodeCard(n) {
+  kindEl.textContent = n.level === 'removed' ? 'Node · removed' : n.id === G.treatment ? 'Node · treatment' : n.id === G.outcome ? 'Node · outcome' : 'Node';
+  const cv = coverage(n);
+  const t = title(nm(n.id)); t.append(h('span', 'pillt', n.role));
+  if (n.c === 'latent') t.append(h('span', 'pillt', 'unobserved'));
+  if (n.c === 'added') t.append(h('span', 'pillt', 'added by Claude'));
+  if (n.s && !FULL[n.id]) body.append(h('p', 'meta', n.s));
+  const m = h('p', 'stat'); m.append(dot(cv), document.createTextNode(`Data coverage: ${COV[cv]}`)); body.append(m);
+  body.append(h('p', 'small', `${n.items.length} variable${n.items.length === 1 ? '' : 's'} collapsed into this node · grouped by ${n.grouped === 'you' ? 'the author' : 'Claude'}`));
+  if (n.note) body.append(h('p', '', n.note));
+  // how this node is drawn now, with the action that changes it
+  if (E.med.has(n.id)) {
+    const a = E.I[n.id][0].from, z = E.O[n.id][0].to, box = h('div', 'box');
+    box.append(h('p', '', `Mediator: at this view it sits only on the way from ${nm(a)} to ${nm(z)}, so Ch. 7 lets it fold into that arrow.`));
+    box.append(E.folded.has(n.id) ? actB('Open it as a node', 'med', () => { st.ov.med.set(n.id, 'open'); update(); })
+                                   : actB('Fold into the arrow', 'med', () => { st.ov.med.set(n.id, 'fold'); update(); }));
+    body.append(box);
+  } else if (n.role === 'mediator') {
+    // a mediator by role that the Ch. 7 rule does not fold: say why, from the arrows at this view
+    const on = E.vis.has(n.id);
+    const ins = on ? (E.I[n.id] || []) : G.edges.filter(e => e.to === n.id), outs = on ? (E.O[n.id] || []) : G.edges.filter(e => e.from === n.id);
+    const list = ids => ids.length < 3 ? ids.join(' and ') : ids.slice(0, -1).join(', ') + ' and ' + ids[ids.length - 1];
+    const why = ins.length > 1 ? `it has ${ins.length} arrows in (from ${list(ins.map(e => nm(e.from)))}), so it is a meeting point, not a pass-through`
+              : outs.length > 1 ? `it has ${outs.length} arrows out (to ${list(outs.map(e => nm(e.to)))}), so it is a fork, not a pass-through`
+              : `it does not have exactly one arrow in and one out${on ? ' at this view' : ''}`;
+    const box = h('div', 'box'); box.append(h('p', '', `Not folded: ${why} (Ch. 7).`)); body.append(box);
+  }
+  if (n.splitInto) {
+    const box = h('div', 'box');
+    box.append(h('p', '', `Merged node: it stands for ${n.splitInto.map(i => nm(i).toLowerCase()).join(' and ')}. ${E.split ? 'It is split now, so it is not drawn.' : ''}`));
+    box.append(E.split ? actB('Merge back', 'split', () => { st.ov.split = false; update(); })
+                       : actB(`Split into ${n.splitInto.map(i => nm(i).toLowerCase()).join(' and ')}`, 'split', () => { st.ov.split = true; update(); }));
+    const tg = h('div', 'tags'); n.splitInto.forEach(i => tg.append(nodeLink(i))); box.append(tg);
+    body.append(box);
+  }
+  if (n.mergedInto) {
+    const p = ND[n.mergedInto], box = h('div', 'box');
+    const bp = h('p'); bp.append(document.createTextNode('Split from '), nodeLink(p.id), document.createTextNode(`. ${p.note || ''} ${E.split ? '' : 'It is merged now, so this node is not drawn.'}`));
+    box.append(bp);
+    box.append(E.split ? actB(`Merge back into ${nm(p.id)}`, 'split', () => { st.ov.split = false; update(); })
+                       : actB('Split it out', 'split', () => { st.ov.split = true; update(); }));
+    body.append(box);
+  }
+  if (n.level === 'removed') {
+    const box = h('div', 'box'); box.append(h('p', '', n.removed || 'Removed as irrelevant (Ch. 7).'));
+    box.append(E.removed ? actB('Hide removed nodes', 'rem', () => { st.ov.removed = false; update(); })
+                         : actB('Show removed nodes, ghosted', 'rem', () => { st.ov.removed = true; update(); }));
+    body.append(box);
+  }
+  sec('What collapsed into it');
+  const ul = h('ul');
+  for (const it of n.items) {
+    const li = h('li'); li.append(h('div', 'it', it.n));
+    const tg = h('div', 'tags');
+    if (it.ds.length) it.ds.forEach(id => tg.append(dsTag(id))); else tg.append(noData());
+    li.append(tg); ul.append(li);
+  }
+  body.append(ul);
+  sec('Data paired with this node');
+  const ul2 = h('ul');
+  if (!n.data.length) ul2.append(h('li', 'small', 'Nothing measures this node directly.'));
+  for (const d of n.data) {
+    const li = h('li'); const tg = h('div', 'tags'); tg.append(dsTag(d.ds));
+    if (d.proxy) tg.append(h('span', 'pillt', 'proxy'));
+    li.append(tg, h('div', 'small', d.what)); ul2.append(li);
+  }
+  body.append(ul2);
+  const ins = G.edges.filter(e => e.to === n.id), outs = G.edges.filter(e => e.from === n.id);
+  sec(`Arrows in (${ins.length}) and out (${outs.length})`);
+  const ul3 = h('ul');
+  ins.forEach(e => ul3.append(edgeLine(e, 'in'))); outs.forEach(e => ul3.append(edgeLine(e, 'out')));
+  if (!ins.length && !outs.length) ul3.append(h('li', 'small', 'None.'));
+  body.append(ul3);
+}
+
+function edgeCard(e) {
+  kindEl.textContent = 'Arrow';
+  const t = title('', ); t.append(nodeLink(e.from), document.createTextNode(' → '), nodeLink(e.to));
+  t.setAttribute('aria-label', `Arrow from ${nm(e.from)} to ${nm(e.to)}`);
+  const q = h('p', 'quote', e.assumption); body.append(q);
+  sec('Colour class');
+  const c = h('p', 'arw'); c.append(swatch(`var(--${e.color})`), h('b', '', COLORNAME[e.color] || e.color));
+  body.append(c, h('p', 'small', cap(COLORTXT[e.color] || '') + '.'));
+  sec('Provenance');
+  const p = h('p', 'arw'); p.append(swatch('var(--ink2)', e.provenance === 'claude'), document.createTextNode(PROV[e.provenance] || e.provenance)); body.append(p);
+  sec('At this view');
+  if (!E.edges.includes(e)) {
+    const box = h('div', 'box');
+    const why = e.level === 'removed' ? 'It belongs to the removed nodes.' : e.level === 'split' ? 'It appears when household resources are split.' : e.level === 'merged' ? 'It appears while household resources are merged.' : '';
+    box.append(h('p', '', `Not drawn now. ${why}`));
+    if (e.level === 'removed') box.append(actB('Show removed nodes', 'ev', () => { st.ov.removed = true; update(); }));
+    if (e.level === 'split') box.append(actB('Split household resources', 'ev', () => { st.ov.split = true; update(); }));
+    if (e.level === 'merged') box.append(actB('Merge household resources', 'ev', () => { st.ov.split = false; update(); }));
+    body.append(box);
+  } else {
+    const via = [e.from, e.to].filter(id => E.folded.has(id));
+    if (via.length) {
+      const box = h('div', 'box');
+      box.append(h('p', '', `Folded: this arrow is drawn through the bead for ${via.map(id => nm(id)).join(' and ')}.`));
+      via.forEach(id => box.append(actB(`Open ${nm(id)}`, 'ev' + id, () => { st.ov.med.set(id, 'open'); update(); })));
+      body.append(box);
+    } else body.append(h('p', 'small', 'Drawn as its own arrow.'));
+  }
+}
+
+function dsCard(d) {
+  kindEl.textContent = 'Dataset';
+  title(d.name);
+  const s = h('p', 'stat'); s.append(dot(d.status), document.createTextNode(DSSTAT[d.status] || d.status)); body.append(s);
+  const dl = h('ul');
+  for (const [k, v] of [['Publisher', d.pub], ['Unit', d.unit], ['Years', d.years]]) { const li = h('li'); li.append(h('span', 'small', k + ': '), document.createTextNode(v)); dl.append(li); }
+  body.append(dl);
+  if (d.note) body.append(h('p', '', d.note));
+  const on = st.ds.has(d.id);
+  const tb = actB(on ? 'Remove outline from the diagram' : 'Outline what it measures on the diagram', 'dsout', () => { on ? st.ds.delete(d.id) : st.ds.add(d.id); update(); });
+  tb.setAttribute('aria-pressed', on ? 'true' : 'false'); body.append(tb);
+  sec('Links');
+  const L = LINKS && LINKS[d.id];
+  const ul = h('ul', 'links');
+  const add = (label, u) => {
+    const url = safeUrl(u); if (!url) return false;
+    const li = h('li'); const a = h('a', 'out', label + ' ↗'); a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.title = url;
+    li.append(a); if (L.verified === false) li.append(h('span', 'pillt warn', 'unverified'));
+    ul.append(li); return true;
+  };
+  let any = false;
+  if (L) { any = add('Landing page', L.url) | any; any = add('Documentation', L.docs) | any; }
+  if (!any) ul.append(h('li', 'small', 'No link found for this dataset.'));
+  body.append(ul);
+  if (L && L.verified === false && any) body.append(h('p', 'small', 'Unverified: the link was not confirmed against the dataset itself.'));
+  // the link checker's own notes stay out of the way: a collapsed disclosure, closed by default
+  if (L && L.note) { const dt = h('details', 'lnotes'); dt.append(h('summary', '', 'Link check notes'), linkify(L.note)); body.append(dt); }
+  sec('Nodes it measures');
+  const ul2 = h('ul');
+  const used = G.nodes.filter(n => nodeDs(n).includes(d.id));
+  if (!used.length) ul2.append(h('li', 'small', 'None.'));
+  for (const n of used) {
+    const li = h('li'); const row = h('div', 'tags'); row.append(nodeLink(n.id));
+    const w = n.data.find(x => x.ds === d.id); if (w && w.proxy) row.append(h('span', 'pillt', 'proxy'));
+    if (!E.vis.has(n.id)) row.append(h('span', 'small', n.level === 'removed' ? '(removed)' : n.mergedInto ? '(split view only)' : '(merged view only)'));
+    li.append(row);
+    const its = n.items.filter(i => i.ds.includes(d.id)).map(i => i.n);
+    const txt = [w && w.what, its.length ? 'via: ' + its.join('; ') : ''].filter(Boolean).join(' · ');
+    if (txt) li.append(h('div', 'small', txt));
+    ul2.append(li);
+  }
+  body.append(ul2);
+}
+function linkify(text) {
+  const p = h('p', 'small');
+  for (const part of text.split(/(https?:\/\/[^\s)]+)/)) {
+    if (/^https?:\/\//.test(part)) { const u = part.replace(/[.,;]+$/, ''); const a = h('a', 'out', u); a.href = u; a.target = '_blank'; a.rel = 'noopener'; p.append(a, document.createTextNode(part.slice(u.length))); }
+    else p.append(document.createTextNode(part));
+  }
+  return p;
+}
+function selCard() {
+  kindEl.textContent = 'Datasets';
+  const ids = [...st.ds];
+  title(`${ids.length} datasets selected`);
+  body.append(h('p', 'small', 'The nodes they measure are outlined on the diagram; the rest is dimmed.'));
+  const ul = h('ul');
+  for (const id of ids) { const li = h('li'); const tg = h('div', 'tags'); tg.append(dsTag(id)); li.append(tg, h('div', 'small', DS[id].name)); ul.append(li); }
+  body.append(ul);
+  sec('Nodes they measure');
+  const ul2 = h('ul');
+  for (const n of G.nodes.filter(n => matches(n.id))) {
+    const li = h('li'); const tg = h('div', 'tags'); tg.append(nodeLink(n.id));
+    nodeDs(n).filter(d => st.ds.has(d)).forEach(d => tg.append(h('span', 'pillt', DS[d].short)));
+    if (!E.vis.has(n.id)) tg.append(h('span', 'small', n.level === 'removed' ? '(removed)' : n.mergedInto ? '(split view only)' : '(merged view only)'));
+    li.append(tg); ul2.append(li);
+  }
+  body.append(ul2);
+}
+function aboutCard() {
+  kindEl.textContent = 'About';
+  title(G.title);
+  body.append(h('p', '', 'Arrows run from cause to effect. Pick a level to expand from the paper figure (Minimal) to everything considered (Maximal), or change one element at a time: a bead opens a folded mediator, a fold tab folds it back, split and merge tabs work on household resources.'));
+  const counts = {in:0, proxy:0, avail:0, none:0}; const vis = [...E.vis];
+  vis.forEach(id => counts[coverage(ND[id])]++);
+  sec('Data coverage at this view');
+  const ul = h('ul');
+  for (const k of ['in', 'proxy', 'avail', 'none']) {
+    const li = h('li'); const s = h('div', 'stat'); s.append(dot(k), document.createTextNode(`${COV[k]}: ${counts[k]}`)); li.append(s);
+    const tg = h('div', 'tags'); vis.filter(id => coverage(ND[id]) === k).forEach(id => tg.append(nodeLink(id))); li.append(tg); ul.append(li);
+  }
+  body.append(ul);
+  sec('Mediators at this view');
+  const tm = h('div', 'tags'); [...E.med].forEach(id => tm.append(nodeLink(id, nm(id) + (E.folded.has(id) ? ' (folded)' : ''))));
+  if (!E.med.size) tm.append(h('span', 'small', 'None.'));
+  body.append(tm);
+  sec('Identified but not retained');
+  const ul2 = h('ul'); (G.setAside || []).forEach(s => ul2.append(h('li', 'small', s))); body.append(ul2);
+}
+
+// ------------------------------------------------------------------ deep links (standalone page only)
+function writeHash() {
+  if (!STANDALONE || auditing) return;
+  const p = [`level=${st.level}`];
+  if (st.ov.split != null) p.push(`split=${+st.ov.split}`);
+  if (st.ov.removed != null) p.push(`removed=${+st.ov.removed}`);
+  const op = [...st.ov.med].filter(([, v]) => v === 'open').map(([k]) => k), fo = [...st.ov.med].filter(([, v]) => v === 'fold').map(([k]) => k);
+  if (op.length) p.push(`open=${op.join(',')}`);
+  if (fo.length) p.push(`fold=${fo.join(',')}`);
+  if (st.ds.size) p.push(`ds=${[...st.ds].join(',')}`);
+  const c = topCard();
+  if (c && c.t === 'node') p.push(`node=${c.id}`);
+  else if (c && c.t === 'edge') p.push(`edge=${c.key}`);
+  else if (c && c.t === 'ds' && !(st.ds.size === 1 && st.ds.has(c.id))) p.push(`dscard=${c.id}`);
+  else if (c && c.t === 'about') p.push('about=1');
+  else if (!c && st.ds.size) p.push('card=0');
+  const hs = '#' + p.join('&');
+  if (location.hash !== hs) try { history.replaceState(null, '', hs); } catch (e) {}
+}
+function readHash() {
+  const q = new URLSearchParams(location.hash.slice(1));
+  st.cards = []; st.ov = NOOV(); st.ds = new Set();
+  const lv = parseInt(q.get('level'), 10); st.level = BASE[lv] ? lv : 0;
+  if (q.has('split')) st.ov.split = q.get('split') === '1';
+  if (q.has('removed')) st.ov.removed = q.get('removed') === '1';
+  E = effective(st.level, st.ov);
+  const op = q.get('open') || '';
+  if (op === 'all') for (const id of E.med) st.ov.med.set(id, 'open');
+  else op.split(',').filter(id => ND[id]).forEach(id => st.ov.med.set(id, 'open'));
+  (q.get('fold') || '').split(',').filter(id => ND[id]).forEach(id => st.ov.med.set(id, 'fold'));
+  (q.get('ds') || '').split(',').filter(id => DS[id]).forEach(id => st.ds.add(id));
+  E = effective(st.level, st.ov);
+  const node = q.get('node'), edge = q.get('edge'), dsc = q.get('dscard');
+  if (node && ND[node]) { reveal(node); st.cards.push({t:'node', id:node}); }
+  else if (edge && EDGE[edge]) {
+    const e = EDGE[edge];
+    if (e.level === 'removed' && !E.removed) st.ov.removed = true;
+    if (e.level === 'split' && !E.split) st.ov.split = true;
+    if (e.level === 'merged' && E.split) st.ov.split = false;
+    st.cards.push({t:'edge', key:edge});
+  }
+  else if (dsc && DS[dsc]) st.cards.push({t:'ds', id:dsc});
+  else if (q.get('about')) st.cards.push({t:'about'});
+  else if (st.ds.size && q.get('card') !== '0') st.cards.push(st.ds.size === 1 ? {t:'ds', id:[...st.ds][0]} : {t:'sel'});
+}
+
+// ------------------------------------------------------------------ responsive: drawer when wide, sheet when narrow
+const setWide = w => {
+  if (w >= 1000) app.setAttribute('data-wide', ''); else app.removeAttribute('data-wide');
+  if (scroller.scrollWidth > scroller.clientWidth + 1) app.setAttribute('data-scrolls', ''); else app.removeAttribute('data-scrolls');
+  if (E && topCard()) placeDrawer(topCard());
+};
+setWide(app.getBoundingClientRect().width || 1200);
+if (typeof ResizeObserver !== 'undefined') {
+  const ro = new ResizeObserver(es => { for (const e of es) setWide(e.contentRect.width); });
+  ro.observe(app); SIG.addEventListener('abort', () => ro.disconnect());
+  if (API && API.onUnmount) API.onUnmount(() => ro.disconnect());
+}
+
+// ------------------------------------------------------------------ layout audit (#audit on the standalone page)
+let auditing = false;
+function audit() {
+  auditing = true;
+  const out = [];
+  const meds0 = [...effective(0, NOOV()).med];
+  const combos = [];
+  for (let lv = 0; lv < 4; lv++) combos.push({level:lv, ov:NOOV()});
+  for (const split of [false, true]) for (const removed of [false, true]) for (let m = 0; m < 1 << (meds0.length + 1); m++) {
+    const ov = {split, removed, med:new Map()};
+    const ids = [...meds0, 'fema'];
+    ids.forEach((id, i) => ov.med.set(id, (m >> i) & 1 ? 'fold' : 'open'));
+    combos.push({level:1, ov});
+  }
+  for (const cb of combos) {
+    st.level = cb.level; st.ov = {split:cb.ov.split, removed:cb.ov.removed, med:new Map(cb.ov.med)};
+    E = effective(st.level, st.ov); prevEdgeKeys = null; drawNodes(); drawEdges(); drawBeads(); drawTags(); drawPills();
+    const tag = `L${cb.level}${cb.ov.split != null ? ` split=${+cb.ov.split} rem=${+cb.ov.removed} fold=${[...cb.ov.med].filter(([, v]) => v === 'fold').map(([k]) => k).join('+')}` : ''}`;
+    const vis = [...E.vis].filter(shown);
+    const boxes = vis.map(id => [id, boxOf(id, 0)]);
+    for (const id of vis) if (ND[id]._tagRect) boxes.push([id + ':tag', ND[id]._tagRect]);
+    const pills = vis.filter(id => pillKind(id)).map(id => [id, pillEls[id]._rect]);
+    const labs = [...E.folded].map(id => [id, beadEls[id]._labRect]);
+    for (let i = 0; i < boxes.length; i++) for (let j = i + 1; j < boxes.length; j++) if (rectsOverlap(boxes[i][1], boxes[j][1])) out.push(`${tag}: box ${boxes[i][0]} overlaps ${boxes[j][0]}`);
+    for (const s of segs) {
+      for (const [id, b] of boxes) if ((id.includes(':') || (id !== s.e.from && id !== s.e.to)) && segRect(s.a[0], s.a[1], s.b[0], s.b[1], [b[0] - 4, b[1] - 4, b[2] + 4, b[3] + 4])) out.push(`${tag}: arrow ${ekey(s.e)} crosses box ${id}`);
+      for (const [id, b] of pills) if (segRect(s.a[0], s.a[1], s.b[0], s.b[1], b)) out.push(`${tag}: arrow ${ekey(s.e)} crosses ${pillKind(id)} pill of ${id}`);
+      for (const id of E.folded) if (id !== s.e.from && id !== s.e.to) { const n = ND[id]; if (segRect(s.a[0], s.a[1], s.b[0], s.b[1], [n.x - 10, n.y - 10, n.x + 10, n.y + 10])) out.push(`${tag}: arrow ${ekey(s.e)} crosses bead ${id}`); }
+      for (const [id, r] of labs) if (segRect(s.a[0], s.a[1], s.b[0], s.b[1], r)) out.push(`${tag}: arrow ${ekey(s.e)} under bead label ${id} (soft)`);
+    }
+    for (const [id, r] of labs) {
+      for (const [bid, b] of boxes) if (rectsOverlap(r, b)) out.push(`${tag}: bead label ${id} on box ${bid}`);
+      for (const [pid, b] of pills) if (rectsOverlap(r, b)) out.push(`${tag}: bead label ${id} on pill ${pid}`);
+      for (const [id2, r2] of labs) if (id2 > id && rectsOverlap(r, r2)) out.push(`${tag}: bead labels ${id} and ${id2} collide`);
+      if (r[0] < 24 || r[2] > VBW || r[1] < 0 || r[3] > VBH) out.push(`${tag}: bead label ${id} out of bounds`);
+    }
+    for (const [id, b] of pills) for (const [bid, bb] of boxes) if ((bid.includes(':') || bid !== id) && rectsOverlap(b, bb)) out.push(`${tag}: pill of ${id} on box ${bid}`);
+    for (const [tid, t] of boxes.filter(([i]) => i.includes(':'))) { for (const [bid, b] of boxes) if (bid !== tid && rectsOverlap(t, b)) out.push(`${tag}: ghost tag ${tid} on ${bid}`); for (const [lid, r] of labs) if (rectsOverlap(t, r)) out.push(`${tag}: ghost tag ${tid} on bead label ${lid}`); }
+    for (const [id, b] of boxes.filter(([i]) => !i.includes(':'))) if (b[0] < 24 || b[2] > VBW - 2 || b[1] < 2 || b[3] > VBH - 2) out.push(`${tag}: box ${id} out of bounds`);
+  }
+  const uniq = [...new Set(out)];
+  const hard = uniq.filter(s => !s.endsWith('(soft)'));
+  const pre = h('pre', 'audit'); pre.id = 'dag-audit';
+  pre.textContent = `AUDIT combos=${combos.length} hard=${hard.length} soft=${uniq.length - hard.length}\n` + uniq.slice(0, 400).join('\n') +
+    '\nWIDTHS ' + JSON.stringify(Object.fromEntries(G.nodes.map(n => [n.id, n.w])));
+  app.append(pre);
+  auditing = false; prevEdgeKeys = null;
+  st.level = 0; st.ov = NOOV();
+}
+
+// ------------------------------------------------------------------ boot
+if (STANDALONE) {
+  if (/audit/.test(location.hash)) audit();
+  if (location.hash.length > 1) readHash();
+  window.addEventListener('hashchange', () => { readHash(); update(); }, ON);
+}
+update();
+requestAnimationFrame(() => requestAnimationFrame(() => app.classList.remove('boot')));
+})();
+</script>
+
+</div>
+</main>
+</body>
+</html>
